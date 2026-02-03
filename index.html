@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,241 +5,143 @@
 <title>💖</title>
 
 <style>
-*{box-sizing:border-box}
-
 body{
 margin:0;
 height:100vh;
-font-family:system-ui;
-background:radial-gradient(circle at top,#ffb3c6,#ff4d6d);
 display:flex;
 justify-content:center;
 align-items:center;
+font-family:Poppins,Arial;
+background:radial-gradient(circle at top,#ff9a9e,#fad0c4);
 overflow:hidden;
 }
 
-.container{
-width:90%;
-max-width:420px;
-background:rgba(255,255,255,.18);
-backdrop-filter:blur(20px);
-border-radius:30px;
-padding:40px 25px 60px;
+#box{
+width:360px;
+padding:40px;
+background:rgba(255,255,255,0.95);
+border-radius:28px;
 text-align:center;
-box-shadow:0 30px 80px rgba(0,0,0,.3);
-position:relative;
+box-shadow:0 30px 60px rgba(0,0,0,.25);
+transform-style:preserve-3d;
 }
 
-h1{margin:0}
-p{opacity:.9}
+h1{
+margin-top:0;
+color:#ff2f68;
+}
+
+p{
+font-size:16px;
+margin-bottom:25px;
+}
 
 .buttons{
-margin-top:25px;
+position:relative;
+height:80px;
 display:flex;
 justify-content:space-between;
-gap:15px;
-position:relative;
-height:60px;
+align-items:center;
+gap:20px;
 }
 
-.btn{
-flex:1;
-padding:14px 0;
+button{
+width:140px;
+height:50px;
 border:none;
-border-radius:40px;
+border-radius:14px;
 font-size:18px;
+font-weight:600;
 cursor:pointer;
 transition:.25s;
+color:white;
+background:linear-gradient(135deg,#ff416c,#ff4b2b);
+box-shadow:0 10px 20px rgba(0,0,0,.25);
 }
 
-.btn:hover{
-transform:scale(1.08);
-box-shadow:0 15px 30px rgba(0,0,0,.3);
-}
-
-#yes{
-background:#00f5d4;
-color:#000;
+button:hover{
+transform:translateY(-6px) scale(1.05);
+box-shadow:0 18px 30px rgba(0,0,0,.35);
 }
 
 #no{
-background:#555;
-color:white;
 position:absolute;
 right:0;
-top:0;
-width:48%;
 }
 
-.message{
+#msg{
 margin-top:15px;
-color:#fff;
-font-size:14px;
-min-height:18px;
+color:#ff2f68;
+font-weight:600;
 }
 
-.heart{
+.hearts span{
 position:fixed;
-bottom:-30px;
+bottom:-20px;
 animation:float 6s linear infinite;
-opacity:.7;
+opacity:.6;
 }
 
 @keyframes float{
-to{transform:translateY(-120vh);opacity:0}
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
 }
-
-.fade{
-animation:fade .5s;
-}
-
-@keyframes fade{
-from{opacity:0;transform:scale(.9)}
-to{opacity:1;transform:scale(1)}
-}
-
 </style>
 </head>
 
 <body>
 
-<div id="app"></div>
+<div id="box">
+<h1>Vaishnavi 💕</h1>
+
+<p>
+Will you be my Valentine? 😌  
+<br><br>
+Telusa… nuvvu navvithe naa world bright aipothundi 😏
+</p>
+
+<div class="buttons">
+<button onclick="yes()">YES 💖</button>
+<button id="no" onclick="nope()">NO 😏</button>
+</div>
+
+<div id="msg"></div>
+</div>
+
+<div class="hearts"></div>
 
 <script>
+let tries=0;
 
-let stage=0;
-let noCount=0;
-
-const app=document.getElementById("app");
-
-function hearts(){
-setInterval(()=>{
-const h=document.createElement("div");
-h.className="heart";
-h.innerHTML="❤️";
-h.style.left=Math.random()*100+"vw";
-h.style.fontSize=14+Math.random()*25+"px";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},280);
-}
-hearts();
-
-function show(html){
-app.innerHTML=`<div class="container fade">${html}</div>`;
-}
-
-start();
-
-function start(){
-show(`
-<h1>Hey Vaishnavi 😌</h1>
-<p>Oka chinna surprise… just for you 💖</p>
-
-<div class="buttons">
-<button class="btn" id="yes" onclick="next()">Continue</button>
-</div>
-`);
-}
-
-function next(){
-stage++;
-noCount=0;
-
-if(stage===1){
-show(`
-<h1>Question Time 😳</h1>
-<p>Ready aa? Konchem cute undi idi…</p>
-
-<div class="buttons">
-<button class="btn" id="yes" onclick="next()">Ready 😄</button>
-<button class="btn" id="no">Not yet</button>
-</div>
-
-<div class="message" id="msg"></div>
-`);
-setupNo();
-}
-
-if(stage===2){
-show(`
-<h1>Serious Matter 🤭</h1>
-<p>Vaishnavi… konchem honest ga answer cheyyali 😌</p>
-
-<div class="buttons">
-<button class="btn" id="yes" onclick="next()">Okay tell 😅</button>
-<button class="btn" id="no">Skip</button>
-</div>
-
-<div class="message" id="msg"></div>
-`);
-setupNo();
-}
-
-if(stage===3){
-show(`
-<h1>Will You Be My Valentine? 💕</h1>
-
-<p>
-Nenu promise chestunna…  
-mee smile responsibility naade 😌  
-mee happiness priority naade ❤️
-</p>
-
-<div class="buttons">
-<button class="btn" id="yes" onclick="next()">YES 💖</button>
-<button class="btn" id="no">NO</button>
-</div>
-
-<div class="message" id="msg"></div>
-`);
-setupNo();
-}
-
-if(stage===4){
-show(`
-<h1>YAYYYYY 🥰</h1>
-
-<p>
-Smart choice Vaishnavi 😉<br>
-Ippudu officially naa Valentine ❤️
-</p>
-
-<p>
-Mee navvu = naa strength  
-Mee happiness = naa duty 😌
-</p>
-
-<h2>Happy Valentine’s Day 🌹</h2>
-
-<p>Thank you for choosing me 💖</p>
-`);
-}
-}
-
-function setupNo(){
-const no=document.getElementById("no");
+function nope(){
+tries++;
 const box=document.querySelector(".buttons");
-const msg=document.getElementById("msg");
+const no=document.getElementById("no");
 
-no.onmouseover=()=>{
-noCount++;
+const maxX=box.clientWidth-140;
+const maxY=40;
 
-const bw=box.clientWidth-no.clientWidth;
-const bh=box.clientHeight-no.clientHeight;
+no.style.left=Math.random()*maxX+"px";
+no.style.top=Math.random()*maxY+"px";
 
-no.style.left=Math.random()*bw+"px";
-no.style.top=Math.random()*bh+"px";
-
-if(noCount>=2){
-msg.innerText="Haha 😏 tappinchukolevu… YES ae option!";
+if(tries>=2){
+document.getElementById("msg").innerText="Haha 😝 escape ledu… YES tap cheyyalsinde!";
 }
-};
 }
 
+function yes(){
+document.body.innerHTML="<h1 style='color:white;text-align:center'>Yayyy Vaishnavi 💖<br><br>Naa Valentine nuvve 😍<br>Forever smiles only 🥰</h1>";
+}
+
+for(let i=0;i<20;i++){
+let s=document.createElement("span");
+s.innerHTML="💗";
+s.style.left=Math.random()*100+"vw";
+s.style.fontSize=12+Math.random()*20+"px";
+s.style.animationDuration=3+Math.random()*4+"s";
+document.querySelector(".hearts").appendChild(s);
+}
 </script>
 
 </body>
 </html>
-
-
