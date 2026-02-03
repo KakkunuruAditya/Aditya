@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>💖</title>
+<title>For Vaishnavi 💖</title>
 
 <style>
 body{
@@ -16,37 +16,31 @@ background:radial-gradient(circle at top,#ff9a9e,#fad0c4);
 overflow:hidden;
 }
 
-#box{
+.page{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+.box{
 width:360px;
 padding:40px;
-background:rgba(255,255,255,0.95);
+background:white;
 border-radius:28px;
 text-align:center;
 box-shadow:0 30px 60px rgba(0,0,0,.25);
-transform-style:preserve-3d;
+animation:pop .6s ease;
 }
 
-h1{
-margin-top:0;
-color:#ff2f68;
-}
-
-p{
-font-size:16px;
-margin-bottom:25px;
-}
-
-.buttons{
-position:relative;
-height:80px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
+@keyframes pop{
+0%{transform:scale(.6);opacity:0}
+100%{transform:scale(1);opacity:1}
 }
 
 button{
-width:140px;
+width:160px;
 height:50px;
 border:none;
 border-radius:14px;
@@ -62,6 +56,15 @@ box-shadow:0 10px 20px rgba(0,0,0,.25);
 button:hover{
 transform:translateY(-6px) scale(1.05);
 box-shadow:0 18px 30px rgba(0,0,0,.35);
+}
+
+.buttons{
+position:relative;
+height:80px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
 }
 
 #no{
@@ -91,28 +94,77 @@ opacity:.6;
 
 <body>
 
-<div id="box">
-<h1>Software Buntyyyyyy Gadiki💕</h1>
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+<div class="box">
+<h1 style="color:#ff2f68">Hey Vaishnavi 😌</h1>
+
+<p style="font-size:17px">
+Oka chinna surprise undi…  
+<br><br>
+Do you want to see what it is? 👀✨
+</p>
+
+<button onclick="goPage2()">Let’s Go 🚀</button>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+<div class="box">
+<h1 style="color:#ff2f68">Software Buntyyyyy Gadiki 💕</h1>
 
 <p>
-"Tech"style lo wishes 😌  
+"Tech" style lo wishes 😌  
 <br><br>
-Will you be my valentine🥹❤️
-Dammunte no cheppu chudham..
+Will you be my Valentine 🥹❤️  
+Dammunte NO cheppu chuddam 😏
 </p>
 
 <div class="buttons">
-<button onclick="yes()">YES 💖</button>
+<button onclick="goPage3()">YES 💖</button>
 <button id="no" onclick="nope()">NO 😏</button>
 </div>
 
 <div id="msg"></div>
+</div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+<div class="box">
+<h1 style="color:#ff2f68">Yayyy 😍</h1>
+
+<p style="font-size:17px">
+Naaku telusu ra nuv YES nokkutav ani 😁💖  
+<br><br>
+Naa Valentine nuvve 🥹❤️  
+<br><br>
+Ee software Bunty ki full access ichesav 😏  
+<br><br>
+From today:<br>
+Smile provider 👉 YOU<br>
+Happiness receiver 👉 ME 😌  
+<br><br>
+Happy Valentine’s Day 💕
+</p>
+</div>
 </div>
 
 <div class="hearts"></div>
 
 <script>
 let tries=0;
+
+function goPage2(){
+page1.classList.remove("active");
+page2.classList.add("active");
+}
+
+function goPage3(){
+page2.classList.remove("active");
+page3.classList.add("active");
+}
 
 function nope(){
 tries++;
@@ -126,60 +178,9 @@ no.style.left=Math.random()*maxX+"px";
 no.style.top=Math.random()*maxY+"px";
 
 if(tries>=2){
-document.getElementById("msg").innerText="Haha 😝 escape ledu… YES tap cheyyalsinde!";
+msg.innerText="Haha 😝 escape ledu… YES tap cheyyalsinde!";
 }
 }
-
-
-function yes(){
-document.body.innerHTML=`
-<div style="
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:radial-gradient(circle at top,#ff9a9e,#fad0c4);
-font-family:Poppins,Arial;
-">
-
-<div style="
-background:white;
-padding:45px;
-border-radius:30px;
-text-align:center;
-width:360px;
-box-shadow:0 30px 60px rgba(0,0,0,.3);
-animation:pop .6s ease;
-">
-
-<h1 style="color:#ff2f68;margin-top:0;">Yayyy 😍</h1>
-
-<p style="font-size:17px">
-Naaku telusu ra nuv YES nokkutav ani 😁💖  
-<br><br>
-Naa Valentine nuvve 🥹❤️  
-<br><br>
-Ee software Bunty ki full access ichesav 😏  
-<br><br>
-From today:  
-Smile provider 👉 YOU  
-Happiness receiver 👉 ME 😌
-<br><br>
-Happy Valentine’s Day 💕
-</p>
-
-</div>
-</div>
-
-<style>
-@keyframes pop{
-0%{transform:scale(.5);opacity:0}
-100%{transform:scale(1);opacity:1}
-}
-</style>
-`;
-  }
-  
 
 for(let i=0;i<20;i++){
 let s=document.createElement("span");
@@ -193,6 +194,3 @@ document.querySelector(".hearts").appendChild(s);
 
 </body>
 </html>
-
-
-
