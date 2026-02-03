@@ -130,9 +130,56 @@ document.getElementById("msg").innerText="Haha 😝 escape ledu… YES tap cheyy
 }
 }
 
+
 function yes(){
-document.body.innerHTML="<h1 style='color:white;text-align:center'>Yayyy naaku telusu ra nuvu yes nokkutav ani 😁💖<br><br>Naa Valentine nuvve 😍<br>Happy valentine's Day</h1>";
+document.body.innerHTML=`
+<div style="
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:radial-gradient(circle at top,#ff9a9e,#fad0c4);
+font-family:Poppins,Arial;
+">
+
+<div style="
+background:white;
+padding:45px;
+border-radius:30px;
+text-align:center;
+width:360px;
+box-shadow:0 30px 60px rgba(0,0,0,.3);
+animation:pop .6s ease;
+">
+
+<h1 style="color:#ff2f68;margin-top:0;">Yayyy 😍</h1>
+
+<p style="font-size:17px">
+Naaku telusu ra nuv YES nokkutav ani 😁💖  
+<br><br>
+Naa Valentine nuvve 🥹❤️  
+<br><br>
+Ee software Bunty ki full access ichesav 😏  
+<br><br>
+From today:  
+Smile provider 👉 YOU  
+Happiness receiver 👉 ME 😌
+<br><br>
+Happy Valentine’s Day 💕
+</p>
+
+</div>
+</div>
+
+<style>
+@keyframes pop{
+0%{transform:scale(.5);opacity:0}
+100%{transform:scale(1);opacity:1}
 }
+</style>
+`;
+  }
+  
 
 for(let i=0;i<20;i++){
 let s=document.createElement("span");
@@ -146,5 +193,6 @@ document.querySelector(".hearts").appendChild(s);
 
 </body>
 </html>
+
 
 
