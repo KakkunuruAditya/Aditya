@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 💖</title>
+<title>For You 💫</title>
 
 <style>
 body{
@@ -12,187 +12,74 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-family:Poppins,Arial;
-background:radial-gradient(circle at top,#ff9a9e,#fad0c4);
+background:linear-gradient(135deg,#000428,#004e92);
+color:white;
 overflow:hidden;
 }
 
-.page{
-display:none;
-}
-
-.active{
-display:block;
-}
-
-.box{
-width:360px;
-padding:40px;
-background:white;
-border-radius:28px;
+.card{
+padding:60px;
+border-radius:32px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(12px);
 text-align:center;
-box-shadow:0 30px 60px rgba(0,0,0,.25);
-animation:pop .6s ease;
+box-shadow:0 40px 90px rgba(0,0,0,.7);
+animation:float 4s ease-in-out infinite;
 }
 
-@keyframes pop{
-0%{transform:scale(.6);opacity:0}
-100%{transform:scale(1);opacity:1}
+h1{
+font-size:38px;
+margin-bottom:20px;
+}
+
+p{
+opacity:.9;
+margin-bottom:35px;
 }
 
 button{
-width:160px;
-height:50px;
-border:none;
-border-radius:14px;
+padding:15px 38px;
 font-size:18px;
-font-weight:600;
+border:none;
+border-radius:50px;
 cursor:pointer;
-transition:.25s;
-color:white;
 background:linear-gradient(135deg,#ff416c,#ff4b2b);
-box-shadow:0 10px 20px rgba(0,0,0,.25);
+color:white;
+box-shadow:0 18px 40px rgba(0,0,0,.6);
+transition:.3s;
 }
 
 button:hover{
-transform:translateY(-6px) scale(1.05);
-box-shadow:0 18px 30px rgba(0,0,0,.35);
-}
-
-.buttons{
-position:relative;
-height:80px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-}
-
-#no{
-position:absolute;
-right:0;
-}
-
-#msg{
-margin-top:15px;
-color:#ff2f68;
-font-weight:600;
-}
-
-.hearts span{
-position:fixed;
-bottom:-20px;
-animation:float 6s linear infinite;
-opacity:.6;
+transform:scale(1.2);
+box-shadow:0 28px 60px rgba(0,0,0,.9);
 }
 
 @keyframes float{
-0%{transform:translateY(0);}
-100%{transform:translateY(-110vh);}
+50%{transform:translateY(-12px);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
-<div id="page1" class="page active">
-<div class="box">
-<h1 style="color:#ff2f68">Hey Vaishnavi 😌</h1>
+<audio id="bgm" src="music.mp3"></audio>
 
-<p style="font-size:17px">
-Oka chinna surprise undi…  
-<br><br>
-Do you want to see what it is? 👀✨
-</p>
-
-<button onclick="goPage2()">Let’s Go 🚀</button>
-</div>
-</div>
-
-<!-- PAGE 2 -->
-<div id="page2" class="page">
-<div class="box">
-<h1 style="color:#ff2f68">Software Buntyyyyy Gadiki</h1>
-
+<div class="card">
+<h1>Hey Vaishnavi 💖</h1>
 <p>
-"Tech" style lo wishes 😌  
-<br><br>
-Will you be my Valentine 🥹❤️  
-  <br><br>
-Dammunte NO cheppu chuddam 😏
+Oka small curiosity…  
+<br>oka cute surprise…  
+<br>oka honest feeling 😌
 </p>
-
-<div class="buttons">
-<button onclick="goPage3()">YES 💖</button>
-<button id="no" onclick="nope()">NO 😏</button>
+<button onclick="go()">Let’s Go ✨</button>
 </div>
-
-<div id="msg"></div>
-</div>
-</div>
-
-<!-- PAGE 3 -->
-<div id="page3" class="page">
-<div class="box">
-<h1 style="color:#ff2f68">Yayyy 😍</h1>
-
-<p style="font-size:17px">
-Naaku telusu ra nuv YES nokkutav ani 😁💖  
-<br><br>
-Naa Valentine nuvve 🥹❤️  
-<br><br>
-Ee software Bunty ki full access ichesav 😏  
-<br><br>
-From today:<br>
-Smile provider 👉 YOU<br>
-Happiness receiver 👉 ME 😌  
-<br><br>
-Happy Valentine’s Day 💕
-</p>
-</div>
-</div>
-
-<div class="hearts"></div>
 
 <script>
-let tries=0;
-
-function goPage2(){
-page1.classList.remove("active");
-page2.classList.add("active");
-}
-
-function goPage3(){
-page2.classList.remove("active");
-page3.classList.add("active");
-}
-
-function nope(){
-tries++;
-const box=document.querySelector(".buttons");
-const no=document.getElementById("no");
-
-const maxX=box.clientWidth-140;
-const maxY=40;
-
-no.style.left=Math.random()*maxX+"px";
-no.style.top=Math.random()*maxY+"px";
-
-if(tries>=2){
-msg.innerText="Haha 😝 escape ledu… YES tap cheyyalsinde!";
-}
-}
-
-for(let i=0;i<20;i++){
-let s=document.createElement("span");
-s.innerHTML="💗";
-s.style.left=Math.random()*100+"vw";
-s.style.fontSize=12+Math.random()*20+"px";
-s.style.animationDuration=3+Math.random()*4+"s";
-document.querySelector(".hearts").appendChild(s);
+function go(){
+document.getElementById("bgm").play();
+setTimeout(()=>location.href="page1.html",500);
 }
 </script>
 
 </body>
 </html>
-
