@@ -1,282 +1,274 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Vaishnavi</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+    box-sizing:border-box;
+}
+
 body{
-height:100vh;
-font-family:'Poppins',system-ui;
-background:#0f0f14;
-color:#fff;
-overflow:hidden;
+    margin:0;
+    height:100vh;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(180deg,#fdeff2,#fce4ec);
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .page{
-position:absolute;
-inset:0;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-opacity:0;
-pointer-events:none;
-transition:1.2s ease;
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 1s ease;
 }
 
 .page.active{
-opacity:1;
-pointer-events:auto;
+    opacity:1;
+    pointer-events:auto;
 }
 
 .card{
-width:90%;
-max-width:460px;
-padding:50px 45px;
-border-radius:30px;
-background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
-backdrop-filter:blur(22px);
-box-shadow:0 45px 120px rgba(0,0,0,.75);
-text-align:center;
+    width:420px;
+    background:rgba(255,255,255,0.9);
+    border-radius:28px;
+    padding:45px;
+    text-align:center;
+    box-shadow:0 40px 80px rgba(0,0,0,0.15);
+    backdrop-filter:blur(10px);
 }
 
 h1{
-font-size:32px;
-margin-bottom:22px;
-font-weight:600;
+    font-family:'Playfair Display',serif;
+    font-size:30px;
+    color:#c2185b;
+    margin-top:0;
 }
 
 p{
-font-size:16px;
-line-height:1.75;
-opacity:.92;
+    font-size:16px;
+    color:#555;
+    line-height:1.6;
+}
+
+.small{
+    font-size:14px;
+    color:#777;
 }
 
 button{
-margin-top:36px;
-padding:14px 42px;
-border-radius:50px;
-border:none;
-font-size:16px;
-font-weight:600;
-cursor:pointer;
-color:#111;
-background:#fff;
-transition:.35s ease;
+    margin-top:25px;
+    padding:12px 32px;
+    font-size:16px;
+    border:none;
+    border-radius:999px;
+    cursor:pointer;
+    font-weight:500;
+    transition:all .3s ease;
 }
 
-button:hover{transform:scale(1.12)}
-
-.fadeText span{
-display:inline-block;
-opacity:0;
-transform:translateY(18px);
-animation:appear .6s forwards;
+.primary{
+    background:linear-gradient(135deg,#ec407a,#f06292);
+    color:white;
+    box-shadow:0 10px 25px rgba(236,64,122,.4);
 }
 
-@keyframes appear{
-to{opacity:1;transform:none}
+.primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(236,64,122,.6);
 }
 
-.glow{
-position:fixed;
-inset:0;
-background:radial-gradient(circle at center,rgba(255,110,160,.18),transparent 70%);
-pointer-events:none;
+.ghost{
+    background:#f8bbd0;
+    color:#880e4f;
 }
 
-.stars span{
-position:absolute;
-width:2px;height:2px;
-background:white;
-opacity:.45;
-animation:float 8s linear infinite;
+.hearts span{
+    position:fixed;
+    bottom:-20px;
+    animation:float 6s linear infinite;
+    opacity:.4;
 }
 
 @keyframes float{
-from{transform:translateY(110vh)}
-to{transform:translateY(-130vh)}
+    to{transform:translateY(-120vh);}
 }
 
-.heart{
-font-size:52px;
-animation:pulse 1.8s infinite;
+/* Valentine question page */
+.buttons-area{
+    margin-top:30px;
+    height:110px;
+    position:relative;
 }
 
-@keyframes pulse{
-50%{transform:scale(1.3)}
+#noBtn{
+    position:absolute;
+    left:0;
+    background:#fce4ec;
 }
 
-/* Valentine Page Layout */
-.choice-area{
-margin-top:30px;
-display:flex;
-justify-content:center;
-gap:22px;
-position:relative;
-height:70px;
+#yesBtn{
+    display:none;
+    background:linear-gradient(135deg,#d81b60,#ec407a);
+    color:white;
+    box-shadow:0 10px 25px rgba(216,27,96,.4);
 }
 
-.choice{
-padding:14px 36px;
-border-radius:50px;
-border:none;
-font-size:16px;
-font-weight:600;
-cursor:pointer;
-transition:.3s ease;
-}
-
-#no{
-background:#ff6b81;
-color:white;
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-}
-
-#yes{
-display:none;
-background:#2ed573;
-color:#111;
-}
-
-.message{
-margin-top:24px;
-min-height:24px;
-font-weight:600;
-color:#ffd6e5;
+#taunt{
+    margin-top:20px;
+    min-height:24px;
+    color:#c2185b;
+    font-weight:500;
 }
 </style>
 </head>
 
 <body>
 
-<div class="glow"></div>
-<div class="stars" id="stars"></div>
-
 <!-- PAGE 1 -->
-<div class="page active" id="p1">
-  <div class="card">
-    <h1>Hello Vaishnavi</h1>
-    <p>
-      This page doesn’t know why you’re here.<br>
-      But the moment you opened it…<br>
-      something quietly shifted.
-    </p>
-    <button onclick="next(2)">Continue</button>
-  </div>
+<div class="page active">
+    <div class="card">
+        <h1>Hey… 🌸</h1>
+        <p>
+            Before anything else,<br>
+            I just want to ask you something.
+        </p>
+        <p class="small">
+            Not a question yet.<br>
+            Just… curiosity wrapped in a little magic.
+        </p>
+        <button class="primary" onclick="go(1)">Let’s begin ✨</button>
+    </div>
 </div>
 
 <!-- PAGE 2 -->
-<div class="page" id="p2">
-  <div class="card">
-    <h1>Observation</h1>
-    <p class="fadeText" id="text2"></p>
-    <button onclick="next(3)">I’m listening</button>
-  </div>
+<div class="page">
+    <div class="card">
+        <h1>A little moment 💫</h1>
+        <p>
+            In this noisy world,<br>
+            some people feel like calm.
+        </p>
+        <p>
+            You’re one of those rare feelings<br>
+            that don’t need explanation.
+        </p>
+        <button class="primary" onclick="go(2)">Tell me more 💗</button>
+    </div>
 </div>
 
 <!-- PAGE 3 -->
-<div class="page" id="p3">
-  <div class="card">
-    <h1>Realization</h1>
-    <p>
-      Some feelings don’t arrive loudly.<br>
-      They grow… slowly… honestly.
-    </p>
-    <button onclick="next(4)">Go on</button>
-  </div>
-</div>
-
-<!-- PAGE 4 -->
-<div class="page" id="p4">
-  <div class="card">
-    <div class="heart">💗</div>
-    <h1>Honesty</h1>
-    <p>
-      Somewhere between conversations,<br>
-      comfort, and silence…<br><br>
-      I realized I care about you.
-    </p>
-    <button onclick="next(5)">One last question</button>
-  </div>
-</div>
-
-<!-- PAGE 5 — THE QUESTION -->
-<div class="page" id="p5">
-  <div class="card">
-    <h1>Vaishnavi</h1>
-    <p style="margin-bottom:10px">
-      Will you be my Valentine?
-    </p>
-
-    <div class="choice-area">
-      <button class="choice" id="no" onclick="escape()">No</button>
-      <button class="choice" id="yes" onclick="next(6)">Yes 💖</button>
+<div class="page">
+    <div class="card">
+        <h1>If I’m honest…</h1>
+        <p>
+            I don’t know when it happened.<br>
+            But somewhere between smiles,<br>
+            conversations, and silences…
+        </p>
+        <p>
+            You became special.
+        </p>
+        <button class="primary" onclick="go(3)">And then? 🌷</button>
     </div>
-
-    <div class="message" id="msg"></div>
-  </div>
 </div>
 
-<!-- PAGE 6 — FINAL -->
-<div class="page" id="p6">
-  <div class="card">
-    <h1>Thank You ❤️</h1>
-    <p>
-      This wasn’t about pressure.<br>
-      Or tricks.<br><br>
-      Just a moment…<br>
-      And a feeling meant for you.<br><br>
-      Happy Valentine’s Day 🌸
-    </p>
-  </div>
+<!-- PAGE 4 : VALENTINE QUESTION -->
+<div class="page">
+    <div class="card">
+        <h1>So here it is… 💖</h1>
+        <p>
+            I’ve been meaning to ask you this<br>
+            in the simplest, most honest way.
+        </p>
+
+        <h2 style="font-family:'Playfair Display';color:#ad1457;">
+            Will you be my Valentine?
+        </h2>
+
+        <div class="buttons-area">
+            <button id="noBtn" class="ghost" onclick="escapeNo()">No 🙃</button>
+            <button id="yesBtn" onclick="finalYes()">Yes 💕</button>
+        </div>
+
+        <div id="taunt"></div>
+    </div>
 </div>
+
+<!-- PAGE 5 : FINAL -->
+<div class="page">
+    <div class="card">
+        <h1>You said yes… 💘</h1>
+        <p>
+            And somehow,<br>
+            everything feels brighter already.
+        </p>
+        <p>
+            Thank you for being you.<br>
+            And for choosing me.
+        </p>
+        <h2 style="font-family:'Playfair Display';color:#c2185b;">
+            Happy Valentine’s Day 💖
+        </h2>
+    </div>
+</div>
+
+<div class="hearts"></div>
 
 <script>
-function next(n){
-document.querySelector('.page.active').classList.remove('active');
-document.getElementById('p'+n).classList.add('active');
+let pages=document.querySelectorAll('.page');
+let current=0;
 
-if(n===2){
-const text="The longer you stay… the more this page notices you. And it doesn’t want you to leave.";
-const el=document.getElementById("text2");
-el.innerHTML="";
-[...text].forEach((c,i)=>{
-const s=document.createElement("span");
-s.textContent=c;
-s.style.animationDelay=i*0.035+"s";
-el.appendChild(s);
-});
-}
+function go(n){
+    pages[current].classList.remove('active');
+    current=n;
+    pages[current].classList.add('active');
 }
 
 let tries=0;
-function escape(){
-tries++;
-const no=document.getElementById("no");
-no.style.left=Math.random()*70+"%";
+function escapeNo(){
+    tries++;
+    const area=document.querySelector('.buttons-area');
+    const no=document.getElementById('noBtn');
 
-const msg=document.getElementById("msg");
-if(tries===1) msg.innerText="😄 Haha… not that easy.";
-if(tries===2) msg.innerText="You can’t escape forever 🙂";
-if(tries>=3){
-msg.innerText="Alright… choice time 💫";
-document.getElementById("yes").style.display="inline-block";
-no.style.display="none";
-}
+    const maxX=area.clientWidth-100;
+    const maxY=60;
+
+    no.style.left=Math.random()*maxX+"px";
+    no.style.top=Math.random()*maxY+"px";
+
+    document.getElementById('taunt').innerText=
+        tries<3 ? "Hehe… not that easy 😏" : "Okay okay… you can’t escape anymore 😌";
+
+    if(tries>=3){
+        no.style.display="none";
+        document.getElementById('yesBtn').style.display="inline-block";
+    }
 }
 
-for(let i=0;i<90;i++){
-let s=document.createElement("span");
-s.style.left=Math.random()*100+"vw";
-s.style.top=Math.random()*100+"vh";
-s.style.animationDuration=5+Math.random()*6+"s";
-document.getElementById("stars").appendChild(s);
+function finalYes(){
+    go(4);
+}
+
+for(let i=0;i<25;i++){
+    let s=document.createElement("span");
+    s.innerHTML="💗";
+    s.style.left=Math.random()*100+"vw";
+    s.style.fontSize=12+Math.random()*18+"px";
+    s.style.animationDuration=4+Math.random()*5+"s";
+    document.querySelector(".hearts").appendChild(s);
 }
 </script>
 
