@@ -2,119 +2,104 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Valentine 💖</title>
+<title>One Question 😏</title>
 
 <style>
 body{
 margin:0;
 height:100vh;
-overflow:hidden;
-font-family:Arial;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 display:flex;
 justify-content:center;
 align-items:center;
+font-family:Poppins;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 }
 
 #box{
+width:480px;
+padding:50px;
 background:white;
-padding:30px;
-border-radius:20px;
+border-radius:34px;
 text-align:center;
-box-shadow:0 0 25px rgba(0,0,0,.2);
-z-index:2;
+box-shadow:0 40px 80px rgba(0,0,0,.35);
+}
+
+h1{color:#ff2f68;}
+
+.buttons{
+margin-top:40px;
+position:relative;
+height:90px;
+display:flex;
+justify-content:space-between;
 }
 
 button{
-padding:12px 28px;
-font-size:18px;
+width:170px;
+height:60px;
 border:none;
-border-radius:12px;
+border-radius:18px;
+font-size:18px;
+font-weight:600;
 cursor:pointer;
+color:white;
+background:linear-gradient(135deg,#ff416c,#ff4b2b);
+box-shadow:0 18px 35px rgba(0,0,0,.35);
+transition:.25s;
 }
 
-#yes{
-background:#ff4d6d;
-color:white;
+button:hover{
+transform:translateY(-6px) scale(1.1);
 }
 
 #no{
 position:absolute;
-background:#999;
-color:white;
+right:0;
 }
 
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-110vh);opacity:0;}
+#msg{
+margin-top:18px;
+color:#ff2f68;
+font-weight:600;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Optional music (replace music.mp3 if you want) -->
-<!-- <audio autoplay loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio> -->
-
 <div id="box">
-<h2>Will you be my Valentine? 💕</h2>
-<p>(I promise lots of love 😌)</p>
-<br>
-<button id="yes" onclick="goYes()">Yes</button>
-<button id="no">No</button>
+<h1>Vaishnavi ❤️</h1>
+
+<p>
+Ippudu serious question 😌  
+<br><br>
+Will you be my Valentine? 🥹💖
+</p>
+
+<div class="buttons">
+<button onclick="yes()">YES 💕</button>
+<button id="no" onclick="nope()">NO 😏</button>
+</div>
+
+<div id="msg"></div>
 </div>
 
 <script>
+let tries=0;
+function nope(){
+tries++;
 const no=document.getElementById("no");
+no.style.left=Math.random()*220+"px";
+no.style.top=Math.random()*40+"px";
 
-// No button escapes
-no.addEventListener("mouseover",()=>{
-const x=Math.random()*(window.innerWidth-100);
-const y=Math.random()*(window.innerHeight-50);
-no.style.left=x+"px";
-no.style.top=y+"px";
-});
+if(tries>=2){
+document.getElementById("msg").innerText=
+"😂 escape ledu… YES cheyyalsinde!";
+}
+}
 
-// Floating hearts
-setInterval(()=>{
-const heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(15+Math.random()*20)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},300);
-
-// Yes page
-function goYes(){
-document.body.innerHTML=`
-<div style="text-align:center;padding:40px;">
-<h1>Yayyyyy 🥰</h1>
-
-<h2>Very good choice 💖</h2>
-
-<p>Thank you for choosing me.</p>
-<p>I promise to make you smile every day ❤️</p>
-
-<br>
-
-<!-- Put her photo here -->
-<!-- <img src="herphoto.jpg" width="250" style="border-radius:20px;"> -->
-
-<h3>Happy Valentine’s Day 🌹</h3>
-
-</div>
-`;
+function yes(){
+location.href="page3.html";
 }
 </script>
 
