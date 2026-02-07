@@ -1,83 +1,198 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For You 💫</title>
+<title>For Vaishnavi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-margin:0;
 height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-font-family:Poppins,Arial;
-background:linear-gradient(135deg,#000428,#004e92);
-color:white;
+font-family:'Poppins',system-ui;
+background:#0f0f14;
+color:#fff;
 overflow:hidden;
 }
 
+.page{
+position:absolute;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+opacity:0;
+pointer-events:none;
+transition:1.2s ease;
+}
+
+.page.active{
+opacity:1;
+pointer-events:auto;
+}
+
 .card{
-padding:60px;
-border-radius:32px;
-background:rgba(255,255,255,0.1);
-backdrop-filter:blur(12px);
+max-width:420px;
+padding:50px;
+border-radius:30px;
+background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+backdrop-filter:blur(20px);
+box-shadow:0 40px 120px rgba(0,0,0,.7);
 text-align:center;
-box-shadow:0 40px 90px rgba(0,0,0,.7);
-animation:float 4s ease-in-out infinite;
 }
 
 h1{
-font-size:38px;
+font-size:32px;
 margin-bottom:20px;
+font-weight:600;
 }
 
 p{
+font-size:16px;
+line-height:1.7;
 opacity:.9;
-margin-bottom:35px;
 }
 
 button{
-padding:15px 38px;
-font-size:18px;
-border:none;
+margin-top:35px;
+padding:14px 40px;
 border-radius:50px;
+border:none;
+font-size:16px;
+font-weight:600;
 cursor:pointer;
-background:linear-gradient(135deg,#ff416c,#ff4b2b);
-color:white;
-box-shadow:0 18px 40px rgba(0,0,0,.6);
-transition:.3s;
+color:#111;
+background:#fff;
+transition:.4s;
 }
 
 button:hover{
-transform:scale(1.2);
-box-shadow:0 28px 60px rgba(0,0,0,.9);
+transform:scale(1.15);
+}
+
+.fadeText span{
+display:inline-block;
+opacity:0;
+transform:translateY(20px);
+animation:appear .6s forwards;
+}
+
+@keyframes appear{
+to{opacity:1;transform:none}
+}
+
+.glow{
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center,rgba(255,100,150,.15),transparent 70%);
+pointer-events:none;
+}
+
+.stars span{
+position:absolute;
+width:2px;height:2px;
+background:white;
+opacity:.4;
+animation:float 8s linear infinite;
 }
 
 @keyframes float{
-50%{transform:translateY(-12px);}
+from{transform:translateY(100vh)}
+to{transform:translateY(-120vh)}
+}
+
+.heart{
+font-size:48px;
+animation:pulse 1.6s infinite;
+}
+
+@keyframes pulse{
+50%{transform:scale(1.25)}
 }
 </style>
 </head>
 
 <body>
 
-<audio id="bgm" src="music.mp3"></audio>
+<div class="glow"></div>
+<div class="stars" id="stars"></div>
 
-<div class="card">
-<h1>Hey Vaishnavi 💖</h1>
-<p>
-Oka small curiosity…  
-<br>oka cute surprise…  
-<br>oka honest feeling 😌
-</p>
-<button onclick="go()">Let’s Go ✨</button>
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+  <div class="card">
+    <h1>Hello Vaishnavi</h1>
+    <p>
+      This page doesn’t know why you’re here.<br>
+      But the moment you opened it…<br>
+      something changed.
+    </p>
+    <button onclick="next(2)">Continue</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+  <div class="card">
+    <h1>Observation</h1>
+    <p class="fadeText" id="text2"></p>
+    <button onclick="next(3)">I’m listening</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+  <div class="card">
+    <h1>No Question Here</h1>
+    <p>
+      Interesting thing about feelings…<br>
+      The more you try to define them,<br>
+      the more they define themselves.
+    </p>
+    <button onclick="next(4)">Then what?</button>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="p4">
+  <div class="card">
+    <div class="heart">💗</div>
+    <h1 style="margin-top:20px">This is not a proposal</h1>
+    <p>
+      This is simply a truth.<br><br>
+      Somewhere between curiosity,<br>
+      laughter, and silence…<br><br>
+      I realized I like you.<br><br>
+      And if moments had feelings,<br>
+      they’d choose you too.
+    </p>
+  </div>
 </div>
 
 <script>
-function go(){
-document.getElementById("bgm").play();
-setTimeout(()=>location.href="page1.html",500);
+function next(n){
+document.querySelector('.page.active').classList.remove('active');
+document.getElementById('p'+n).classList.add('active');
+
+if(n===2){
+const text="The longer you stay… the more this page notices you. And oddly, it doesn’t want you to leave.";
+const el=document.getElementById("text2");
+el.innerHTML="";
+[...text].forEach((c,i)=>{
+const s=document.createElement("span");
+s.textContent=c;
+s.style.animationDelay=i*0.03+"s";
+el.appendChild(s);
+});
+}
+}
+
+for(let i=0;i<80;i++){
+let s=document.createElement("span");
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+s.style.animationDuration=5+Math.random()*6+"s";
+document.getElementById("stars").appendChild(s);
 }
 </script>
 
