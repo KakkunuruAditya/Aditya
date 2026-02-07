@@ -33,7 +33,7 @@ pointer-events:auto;
 }
 
 .card{
-max-width:420px;
+max-width:440px;
 padding:50px;
 border-radius:30px;
 background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
@@ -110,6 +110,45 @@ animation:pulse 1.6s infinite;
 @keyframes pulse{
 50%{transform:scale(1.25)}
 }
+
+.buttons{
+position:relative;
+height:90px;
+margin-top:30px;
+}
+
+.choice{
+position:absolute;
+padding:14px 34px;
+border-radius:50px;
+border:none;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+#no{
+background:#ff6b81;
+color:white;
+left:50%;
+transform:translateX(-50%);
+}
+
+#yes{
+display:none;
+background:#2ed573;
+color:#111;
+left:50%;
+transform:translateX(-50%);
+top:45px;
+}
+
+#msg{
+margin-top:20px;
+color:#ffb6c1;
+font-weight:600;
+}
 </style>
 </head>
 
@@ -145,11 +184,10 @@ animation:pulse 1.6s infinite;
   <div class="card">
     <h1>No Question Here</h1>
     <p>
-      Interesting thing about feelings…<br>
-      The more you try to define them,<br>
-      the more they define themselves.
+      Some feelings don’t need permission.<br>
+      They quietly arrive… and stay.
     </p>
-    <button onclick="next(4)">Then what?</button>
+    <button onclick="next(4)">And then?</button>
   </div>
 </div>
 
@@ -157,14 +195,44 @@ animation:pulse 1.6s infinite;
 <div class="page" id="p4">
   <div class="card">
     <div class="heart">💗</div>
-    <h1 style="margin-top:20px">This is not a proposal</h1>
+    <h1>This is not a proposal</h1>
     <p>
-      This is simply a truth.<br><br>
-      Somewhere between curiosity,<br>
-      laughter, and silence…<br><br>
-      I realized I like you.<br><br>
-      And if moments had feelings,<br>
-      they’d choose you too.
+      It’s just honesty.<br><br>
+      Somewhere between moments,<br>
+      smiles, and silence…<br><br>
+      I realized I like you.
+    </p>
+    <button onclick="next(5)">One last thing</button>
+  </div>
+</div>
+
+<!-- PAGE 5 — VALENTINE MOMENT -->
+<div class="page" id="p5">
+  <div class="card">
+    <h1>So…</h1>
+    <p>
+      Now that we’re here…<br>
+      let me finally ask you properly.
+    </p>
+
+    <div class="buttons">
+      <button class="choice" id="no" onclick="escape()">No</button>
+      <button class="choice" id="yes" onclick="next(6)">Yes 💖</button>
+    </div>
+
+    <div id="msg"></div>
+  </div>
+</div>
+
+<!-- PAGE 6 — FINAL -->
+<div class="page" id="p6">
+  <div class="card">
+    <h1>Thank You ❤️</h1>
+    <p>
+      I didn’t want fireworks.<br>
+      I didn’t want drama.<br><br>
+      I just wanted this moment.<br><br>
+      Will you be my Valentine, Vaishnavi? 🌸
     </p>
   </div>
 </div>
@@ -187,7 +255,20 @@ el.appendChild(s);
 }
 }
 
-for(let i=0;i<80;i++){
+let tries=0;
+function escape(){
+tries++;
+const no=document.getElementById("no");
+no.style.left=Math.random()*70+"%";
+no.style.top=Math.random()*40+"px";
+
+if(tries>=3){
+document.getElementById("msg").innerText="You can’t escape forever 🙂";
+document.getElementById("yes").style.display="block";
+}
+}
+
+for(let i=0;i<90;i++){
 let s=document.createElement("span");
 s.style.left=Math.random()*100+"vw";
 s.style.top=Math.random()*100+"vh";
