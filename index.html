@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,8 +158,40 @@ body{
   </div>
 </div>
 
+<!-- PAGE 6: MEMORY GALLERY -->
+<div class="page" id="galleryPage">
+  <div class="letter">
+    <h1>Little Memories</h1>
+    <p>Oka smile… oka moment… oka feeling.<br>Ee memories anni naa heart lo permanent.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:25px 0">
+      <div style="background:#d9b98c;height:90px;border-radius:12px"></div>
+      <div style="background:#e3c9a4;height:90px;border-radius:12px"></div>
+      <div style="background:#cfae82;height:90px;border-radius:12px"></div>
+      <div style="background:#e8d3b0;height:90px;border-radius:12px"></div>
+    </div>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('signaturePage')">One Last Thing ✨</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 7: SIGNATURE -->
+<div class="page" id="signaturePage">
+  <div class="letter" style="text-align:center">
+    <h1>With All My Heart</h1>
+    <p>Ee website kaadu… idi naa effort.<br>Ee words kaadu… idi naa feeling.</p>
+    <p style="font-family:'Great Vibes',cursive;font-size:34px;margin:25px 0;color:#6e1f2c">
+      — Aditya
+    </p>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('finalPage')">Open Finale 💖</button>
+    </div>
+  </div>
+</div>
+
 <div class="page" id="finalPage">
   <div class="finalText">Happy Valentine’s Day 💝</div>
+</div>
 </div>
 
 <script>
