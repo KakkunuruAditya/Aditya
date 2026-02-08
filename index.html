@@ -5,37 +5,35 @@
 <title>💌 For Vaishnavi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;
-  height:100vh;
+  margin:0;height:100vh;
   font-family:'Playfair Display',serif;
   background:radial-gradient(circle at top,#2b0f17,#0d0508);
   overflow:hidden;
 }
 .page{
-  position:absolute; inset:0;
-  display:flex; justify-content:center; align-items:center;
-  opacity:0; pointer-events:none;
+  position:absolute;inset:0;
+  display:flex;justify-content:center;align-items:center;
+  opacity:0;pointer-events:none;
   transition:opacity 1s ease;
 }
-.page.active{opacity:1; pointer-events:auto}
+.page.active{opacity:1;pointer-events:auto}
 
 /* Envelope */
 #envelopePage{background:radial-gradient(circle at top,#3a141b,#12070a)}
 .envelope{
-  width:360px; height:250px;
+  width:380px;height:260px;
   background:linear-gradient(135deg,#8a4b32,#5a2b1c);
-  border-radius:20px;
-  position:relative; cursor:pointer;
+  border-radius:22px;
+  position:relative;cursor:pointer;
   box-shadow:0 35px 70px rgba(0,0,0,.7);
 }
 .flap{
-  position:absolute; top:0; left:0; right:0;
+  position:absolute;top:0;left:0;right:0;
   height:60%;
   background:linear-gradient(135deg,#9b563a,#6b3423);
   clip-path:polygon(0 0,100% 0,50% 100%);
@@ -44,85 +42,105 @@ body{
 }
 .envelope.open .flap{transform:rotateX(160deg)}
 .envelopeText{
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
   font-family:'Great Vibes',cursive;
-  font-size:40px; color:#f7e6d2;
+  font-size:42px;color:#f7e6d2;
 }
 
 /* Letter */
 .letter{
-  width:90%; max-width:560px;
+  width:90%;max-width:560px;
   background:radial-gradient(circle at top,#f7e6c4,#e7cfa2);
   padding:55px 50px;
-  border-radius:24px;
+  border-radius:26px;
   box-shadow:0 30px 70px rgba(0,0,0,.4);
   position:relative;
 }
 .letter:before{
-  content:''; position:absolute; inset:0;
+  content:'';position:absolute;inset:0;
   background:url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-  opacity:.35; border-radius:24px;
+  opacity:.35;border-radius:26px;
 }
 .letter h1{
   font-family:'Great Vibes',cursive;
-  font-size:48px; color:#5a2b1c; margin-top:0;
+  font-size:48px;color:#5a2b1c;margin-top:0;
 }
-.letter p{font-size:17px; line-height:1.9}
+.letter p{font-size:17px;line-height:1.9}
 
 /* Buttons */
 .buttons-area{
-  margin-top:35px; height:100px; position:relative;
-  display:flex; justify-content:space-between; align-items:center;
+  margin-top:35px;height:100px;
+  position:relative;
+  display:flex;justify-content:space-between;align-items:center;
 }
 .btn{
-  width:160px; height:54px;
-  border:none; border-radius:18px;
-  font-size:18px; font-weight:600;
-  cursor:pointer; color:white;
+  width:160px;height:54px;
+  border:none;border-radius:18px;
+  font-size:18px;font-weight:600;
+  cursor:pointer;color:white;
   background:linear-gradient(135deg,#a44a5d,#6e1f2c);
   box-shadow:0 12px 25px rgba(0,0,0,.35);
   transition:.3s;
 }
 .btn:hover{transform:translateY(-6px) scale(1.05)}
-#noBtn{position:absolute; right:0}
-#taunt{margin-top:18px; font-weight:600; color:#6e1f2c; min-height:24px}
+#noBtn{position:absolute;right:0}
+#taunt{margin-top:18px;font-weight:600;color:#6e1f2c;min-height:26px}
+
+/* Destiny Page */
+#destinyPage{
+  background:radial-gradient(circle at top,#f6d365,#fda085);
+}
+.destinyText{
+  text-align:center;
+  font-family:'Great Vibes',cursive;
+  font-size:56px;
+  color:#7a1432;
+  animation:fadeUp 1.6s ease forwards;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
 
 /* Final */
 #finalPage{background:radial-gradient(circle,#ffdde1,#ee9ca7)}
 .finalText{
   font-family:'Great Vibes',cursive;
-  font-size:78px; color:#7a1432;
+  font-size:78px;color:#7a1432;
   animation:zoomIn 2s ease forwards;
 }
-@keyframes zoomIn{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes zoomIn{
+  from{transform:scale(.2);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
 
-/* Rose petals */
+/* Petals */
 #petals span{
-  position:fixed;
-  top:-10vh;
+  position:fixed;top:-10vh;
   animation:fall linear infinite;
   opacity:.8;
 }
 @keyframes fall{
   to{transform:translateY(120vh) rotate(360deg)}
-}to{transform:scale(1);opacity:1}}
+}
 
 /* Music */
 .musicBtn{
-  position:fixed; bottom:20px; right:20px;
-  background:#6e1f2c; color:white;
-  border:none; border-radius:50%;
-  width:56px; height:56px;
-  font-size:22px; cursor:pointer;
+  position:fixed;bottom:20px;right:20px;
+  background:#6e1f2c;color:white;
+  border:none;border-radius:50%;
+  width:56px;height:56px;
+  font-size:22px;cursor:pointer;
   box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
 </style>
 </head>
+
 <body>
 
 <audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_eb4c74f2d7.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_eb4c74f2d7.mp3">
 </audio>
 <button class="musicBtn" onclick="toggleMusic()">🎶</button>
 
@@ -137,7 +155,9 @@ body{
   <div class="letter">
     <h1>Vaishnavi,</h1>
     <p>Idi oka letter kaadu… idi naa hrudayam nundi vachina feeling.</p>
-    <div class="buttons-area"><button class="btn" onclick="nextPage('page2')">Continue ✨</button></div>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('page2')">Continue ✨</button>
+    </div>
   </div>
 </div>
 
@@ -145,7 +165,9 @@ body{
   <div class="letter">
     <h1>A Little Truth</h1>
     <p>Premante demand kaadu… care. Noise kaadu… calm.</p>
-    <div class="buttons-area"><button class="btn" onclick="nextPage('page3')">Next 💭</button></div>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('page3')">Next 💭</button>
+    </div>
   </div>
 </div>
 
@@ -153,7 +175,9 @@ body{
   <div class="letter">
     <h1>Telugu Lines</h1>
     <p>నీ నవ్వే నా రోజు వెలుగు… నీ మాటే నా మనసు గమ్యం.</p>
-    <div class="buttons-area"><button class="btn" onclick="nextPage('valentinePage')">One Question 💖</button></div>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('valentinePage')">One Question 💖</button>
+    </div>
   </div>
 </div>
 
@@ -161,73 +185,72 @@ body{
   <div class="letter">
     <h1>So…</h1>
     <p>Will you be my Valentine?</p>
-    <div class="buttons-area">
-      <button class="btn" id="yesBtn" onclick="nextPage('finalPage')">YES 💕</button>
+    <div class="buttons-area" id="valArea">
+      <button class="btn" id="yesBtn" onclick="nextPage('destinyPage')">YES 💕</button>
       <button class="btn" id="noBtn" onclick="escapeNo()">NO 😏</button>
     </div>
     <div id="taunt"></div>
   </div>
 </div>
 
-<!-- PAGE 6: MEMORY GALLERY -->
-<div class="page" id="galleryPage">
-  <div class="letter">
-    <h1>Little Memories</h1>
-    <p>Oka smile… oka moment… oka feeling.<br>Ee memories anni naa heart lo permanent.</p>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:25px 0">
-      <div style="background:#d9b98c;height:90px;border-radius:12px"></div>
-      <div style="background:#e3c9a4;height:90px;border-radius:12px"></div>
-      <div style="background:#cfae82;height:90px;border-radius:12px"></div>
-      <div style="background:#e8d3b0;height:90px;border-radius:12px"></div>
-    </div>
-    <div class="buttons-area">
-      <button class="btn" onclick="nextPage('signaturePage')">One Last Thing ✨</button>
-    </div>
-  </div>
-</div>
-
-<!-- PAGE 7: SIGNATURE -->
-<div class="page" id="signaturePage">
-  <div class="letter" style="text-align:center">
-    <h1>With All My Heart</h1>
-    <p>Ee website kaadu… idi naa effort.<br>Ee words kaadu… idi naa feeling.</p>
-    <p style="font-family:'Great Vibes',cursive;font-size:34px;margin:25px 0;color:#6e1f2c">
-      — Aditya
-    </p>
-    <div class="buttons-area">
-      <button class="btn" onclick="nextPage('finalPage')">Open Finale 💖</button>
-    </div>
+<!-- NEW DESTINY PAGE -->
+<div class="page" id="destinyPage">
+  <div class="destinyText">
+    Hehe… I knew you’d click YES 😌<br>
+    Some things are just destiny 💫
   </div>
 </div>
 
 <div class="page" id="finalPage">
   <div class="finalText">Happy Valentine’s Day 💝</div>
 </div>
-</div>
 
-<!-- ROSE PETALS -->
 <div id="petals"></div>
 
 <script>
 let tries=0, music=false;
-function openEnvelope(){document.querySelector('.envelope').classList.add('open');setTimeout(()=>showPage('page1'),1200)}
-function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active')}
-function nextPage(id){showPage(id)}
-function escapeNo(){tries++;const area=document.querySelector('.buttons-area');const no=document.getElementById('noBtn');no.style.left=Math.random()*(area.clientWidth-160)+'px';no.style.top=Math.random()*60+'px';document.getElementById('taunt').innerText=tries<3?'Nice try 😌':'No escape now 😘';if(tries>=3){no.style.display='none'}}
-function toggleMusic(){const m=document.getElementById('bgMusic');music?m.pause():m.play();music=!music}
 
-// Rose petals generation
+function openEnvelope(){
+  document.querySelector('.envelope').classList.add('open');
+  setTimeout(()=>showPage('page1'),1200);
+}
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function nextPage(id){
+  showPage(id);
+  if(id==='destinyPage'){
+    setTimeout(()=>showPage('finalPage'),2200);
+  }
+}
+
+function escapeNo(){
+  tries++;
+  const area=document.getElementById('valArea');
+  const no=document.getElementById('noBtn');
+  no.style.left=Math.random()*(area.clientWidth-160)+'px';
+  no.style.top=Math.random()*60+'px';
+  document.getElementById('taunt').innerText =
+    tries<3 ? "Nice try 😌" : "No escape now 😘";
+  if(tries>=3){no.style.display='none'}
+}
+
+function toggleMusic(){
+  const m=document.getElementById('bgMusic');
+  music?m.pause():m.play();
+  music=!music;
+}
+
 for(let i=0;i<18;i++){
   const p=document.createElement('span');
   p.innerHTML='🌸';
   p.style.left=Math.random()*100+'vw';
   p.style.fontSize=14+Math.random()*18+'px';
   p.style.animationDuration=6+Math.random()*6+'s';
-  p.style.animationDelay=Math.random()*5+'s';
   document.getElementById('petals').appendChild(p);
 }
 </script>
 
 </body>
 </html>
-
