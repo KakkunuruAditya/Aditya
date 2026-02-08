@@ -1,229 +1,246 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For You ❤️</title>
+<title>💌 For Vaishnavi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:'Playfair Display', serif;
-}
-
+/* ================= GLOBAL ================= */
+*{box-sizing:border-box}
 body{
-    height:100vh;
-    background:radial-gradient(circle at top,#2b0a16,#0b0206);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    color:#fff;
+  margin:0;
+  height:100vh;
+  font-family:'Playfair Display',serif;
+  background:radial-gradient(circle at top,#2b0f17,#0d0508);
+  overflow:hidden;
+  color:#3b1b1f;
 }
-
-/* ----------------- ENVELOPE PAGE ----------------- */
-#envelopePage{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(145deg,#3b0f1f,#120308);
-}
-
-.envelope{
-    width:320px;
-    height:220px;
-    background:#8b5a2b;
-    position:relative;
-    cursor:pointer;
-    border-radius:12px;
-    box-shadow:0 25px 60px rgba(0,0,0,.6);
-    transition:transform .6s ease;
-}
-
-.envelope:hover{
-    transform:scale(1.05);
-}
-
-.flap{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#a06a3b;
-    clip-path:polygon(0 0,100% 0,50% 55%);
-    transform-origin:top;
-    transition:transform 1s ease;
-}
-
-.envelope.open .flap{
-    transform:rotateX(160deg);
-}
-
-.seal{
-    position:absolute;
-    bottom:35px;
-    left:50%;
-    transform:translateX(-50%);
-    width:50px;
-    height:50px;
-    background:#7a1c2e;
-    border-radius:50%;
-    box-shadow:0 0 10px rgba(0,0,0,.6);
-}
-
-/* ----------------- PAGES ----------------- */
 .page{
-    position:absolute;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 1s ease;
 }
-
 .page.active{
-    display:flex;
+  opacity:1;
+  pointer-events:auto;
 }
 
-.card{
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(16px);
-    padding:45px;
-    border-radius:22px;
-    text-align:center;
-    max-width:420px;
-    width:90%;
-    box-shadow:0 30px 80px rgba(0,0,0,.6);
+/* ================= ENVELOPE PAGE ================= */
+#envelopePage{
+  background:radial-gradient(circle at top,#3a141b,#12070a);
+}
+.envelope{
+  width:320px;
+  height:220px;
+  background:linear-gradient(135deg,#7b3f2a,#4e2618);
+  border-radius:18px;
+  position:relative;
+  cursor:pointer;
+  box-shadow:0 30px 60px rgba(0,0,0,.6);
+}
+.envelope:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(0,0,0,.2));
+}
+.flap{
+  position:absolute;
+  top:0;left:0;right:0;
+  height:60%;
+  background:linear-gradient(135deg,#8d4a32,#5a2b1c);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;
+  transition:transform 1.2s ease;
+}
+.envelope.open .flap{
+  transform:rotateX(160deg);
+}
+.envelopeText{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Great Vibes',cursive;
+  font-size:36px;
+  color:#f7e6d2;
 }
 
-/* ----------------- TEXT ----------------- */
-.question{
-    font-size:32px;
-    margin-bottom:25px;
+/* ================= LETTER CONTAINER ================= */
+.letter{
+  width:85%;
+  max-width:520px;
+  background:radial-gradient(circle at top,#f7e6c4,#e7cfa2);
+  padding:50px 45px;
+  border-radius:22px;
+  box-shadow:0 25px 60px rgba(0,0,0,.35);
+  position:relative;
+}
+.letter:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  opacity:.35;
+}
+.letter h1{
+  font-family:'Great Vibes',cursive;
+  font-size:46px;
+  margin-top:0;
+  color:#5a2b1c;
+}
+.letter p{
+  font-size:17px;
+  line-height:1.8;
 }
 
-.taunt{
-    margin-top:15px;
-    min-height:24px;
-    font-style:italic;
-    opacity:.85;
-}
-
-/* ----------------- BUTTONS ----------------- */
+/* ================= BUTTONS ================= */
 .buttons-area{
-    position:relative;
-    height:80px;
-    margin-top:30px;
+  margin-top:35px;
+  height:90px;
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.btn{
+  width:150px;
+  height:52px;
+  border:none;
+  border-radius:16px;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+  color:white;
+  background:linear-gradient(135deg,#a44a5d,#6e1f2c);
+  box-shadow:0 10px 22px rgba(0,0,0,.35);
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-5px) scale(1.05);
+}
+#noBtn{position:absolute;right:0}
+#taunt{
+  margin-top:15px;
+  font-weight:600;
+  color:#6e1f2c;
+  min-height:22px;
 }
 
-button{
-    padding:12px 30px;
-    border:none;
-    border-radius:30px;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
+/* ================= FINAL PAGE ================= */
+#finalPage{
+  background:radial-gradient(circle at center,#ffdde1,#ee9ca7);
 }
-
-#yesBtn{
-    background:linear-gradient(135deg,#ff5c8a,#ff8fab);
-    color:#fff;
-    margin-right:15px;
+.finalText{
+  font-family:'Great Vibes',cursive;
+  font-size:70px;
+  color:#7a1432;
+  animation:zoomIn 2s ease forwards;
 }
-
-#noBtn{
-    position:absolute;
-    left:0;
-    background:#f3d0d8;
-    color:#6a1b3a;
-}
-
-/* ----------------- FINAL PAGE ----------------- */
-.final-text{
-    font-family:'Great Vibes', cursive;
-    font-size:60px;
-    animation:zoomOut 2.2s ease forwards;
-}
-
-@keyframes zoomOut{
-    from{transform:scale(.2);opacity:0;}
-    to{transform:scale(1);opacity:1;}
+@keyframes zoomIn{
+  from{transform:scale(.2);opacity:0}
+  to{transform:scale(1);opacity:1}
 }
 </style>
 </head>
-
 <body>
 
-<!-- Envelope -->
-<div id="envelopePage">
-    <div class="envelope" onclick="openLetter()">
-        <div class="flap"></div>
-        <div class="seal"></div>
-    </div>
+<!-- PAGE 1: ENVELOPE -->
+<div class="page active" id="envelopePage">
+  <div class="envelope" onclick="openEnvelope()">
+    <div class="flap"></div>
+    <div class="envelopeText">For You 💌</div>
+  </div>
 </div>
 
-<!-- Valentine Question -->
-<div id="page1" class="page">
-    <div class="card">
-        <div class="question">Will you be my Valentine? 💖</div>
-
-        <div class="buttons-area">
-            <button id="yesBtn" onclick="goFinal()">Yes 💕</button>
-            <button id="noBtn" onclick="escapeNo()">No</button>
-        </div>
-
-        <div id="taunt" class="taunt"></div>
+<!-- PAGE 2: LETTER 1 -->
+<div class="page" id="page1">
+  <div class="letter">
+    <h1>Vaishnavi,</h1>
+    <p>
+      Idi just oka letter kaadu… idi naa hrudayam lo raasina story.
+      Oka smile, oka look, oka feeling… anni nannu slowly nee daggariki theesukochai.
+    </p>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('page2')">Continue ✨</button>
     </div>
+  </div>
 </div>
 
-<!-- Final Page -->
-<div id="finalPage" class="page">
-    <div class="final-text">Happy Valentine’s Day ❤️</div>
+<!-- PAGE 3: LETTER 2 -->
+<div class="page" id="page2">
+  <div class="letter">
+    <h1>A Little Truth</h1>
+    <p>
+      Premante perfect lines kaadu… honest feelings.
+      Nee presence chaalu… roju peaceful ga untundi.
+    </p>
+    <div class="buttons-area">
+      <button class="btn" onclick="nextPage('valentinePage')">One Question 💭</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: VALENTINE QUESTION -->
+<div class="page" id="valentinePage">
+  <div class="letter">
+    <h1>So…</h1>
+    <p>Will you be my Valentine? 💖</p>
+
+    <div class="buttons-area">
+      <button class="btn" id="yesBtn" onclick="nextPage('finalPage')">YES 💕</button>
+      <button class="btn" id="noBtn" onclick="escapeNo()">NO 😏</button>
+    </div>
+
+    <div id="taunt"></div>
+  </div>
+</div>
+
+<!-- PAGE 5: FINAL -->
+<div class="page" id="finalPage">
+  <div class="finalText">Happy Valentine’s Day 💝</div>
 </div>
 
 <script>
-let tries = 0;
+let tries=0;
 
-/* Open envelope */
-function openLetter(){
-    const env = document.querySelector('.envelope');
-    env.classList.add('open');
-
-    setTimeout(()=>{
-        document.getElementById('envelopePage').style.display='none';
-        document.getElementById('page1').classList.add('active');
-    },1000);
+function openEnvelope(){
+  const env=document.querySelector('.envelope');
+  env.classList.add('open');
+  setTimeout(()=>showPage('page1'),1200);
 }
 
-/* Escape NO */
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function nextPage(id){showPage(id)}
+
 function escapeNo(){
-    tries++;
-
-    const area = document.querySelector('.buttons-area');
-    const no = document.getElementById('noBtn');
-
-    no.style.left = Math.random() * (area.clientWidth - 90) + "px";
-    no.style.top  = Math.random() * 50 + "px";
-
-    document.getElementById('taunt').innerText =
-        tries < 3 ? "Not yet… 😌" : "You can’t escape fate.";
-
-    if(tries >= 3){
-        no.style.display = "none";
-    }
-}
-
-/* YES → Final */
-function goFinal(){
-    document.getElementById('page1').classList.remove('active');
-    document.getElementById('finalPage').classList.add('active');
+  tries++;
+  const area=document.querySelector('.buttons-area');
+  const no=document.getElementById('noBtn');
+  const maxX=area.clientWidth-150;
+  const maxY=50;
+  no.style.left=Math.random()*maxX+'px';
+  no.style.top=Math.random()*maxY+'px';
+  document.getElementById('taunt').innerText = tries<3 ? 'Nice try 😌' : 'No escape now 😘';
+  if(tries>=3){ no.style.display='none'; }
 }
 </script>
 
