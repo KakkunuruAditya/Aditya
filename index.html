@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,13 +44,36 @@ body{
   border:2px solid rgba(255,215,180,.35);
 }
 .flap{
-  position:absolute;top:0;left:0;right:0;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
   height:62%;
-  background:linear-gradient(145deg,#6b1a2e,#a83b56);
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:top;
+
+  /* same color family, smoother paper-like gradient */
+  background:linear-gradient(
+    to bottom,
+    #a33a52 0%,
+    #7b1e34 55%,
+    #6b1a2e 100%
+  );
+
+  /* NATURAL envelope fold (no sharp triangle) */
+  clip-path:polygon(
+    0 0,
+    100% 0,
+    96% 72%,
+    50% 100%,
+    4% 72%
+  );
+
+  transform-origin:top center;
   transition:transform 1.2s ease;
-  box-shadow:inset 0 -10px 20px rgba(0,0,0,.35);
+
+  /* depth + fold realism */
+  box-shadow:
+    inset 0 -14px 22px rgba(0,0,0,.35),
+    0 4px 10px rgba(0,0,0,.25);
 }
 .envelope.open .flap{transform:rotateX(160deg)}
 .envelopeText{
@@ -332,3 +354,4 @@ function typeFinalText(){
 
 </body>
 </html>
+
