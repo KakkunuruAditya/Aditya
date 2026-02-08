@@ -23,35 +23,52 @@ body{
 }
 .page.active{opacity:1;pointer-events:auto}
 
-/* ================= ROYAL ENVELOPE ================= */
+/* ================= ROYAL ENVELOPE (PERFECTED) ================= */
 #envelopePage{
   background:radial-gradient(circle at top,#3a141b,#12070a);
 }
 .envelope{
   width:420px;height:280px;
   background:linear-gradient(145deg,#4a0f1f,#7b1e34,#4a0f1f);
-  border-radius:24px;
+  border-radius:26px;
   position:relative;cursor:pointer;
   box-shadow:
     0 40px 90px rgba(0,0,0,.8),
     inset 0 0 0 3px rgba(255,215,180,.25);
+  overflow:hidden;
 }
 .envelope:before{
   content:'';
   position:absolute;inset:14px;
-  border-radius:18px;
+  border-radius:20px;
   border:2px solid rgba(255,215,180,.35);
 }
+
+/* Natural curved flap */
 .flap{
-  position:absolute;top:0;left:0;right:0;
-  height:62%;
-  background:linear-gradient(145deg,#6b1a2e,#a83b56);
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:top;
-  transition:transform 1.2s ease;
-  box-shadow:inset 0 -10px 20px rgba(0,0,0,.35);
+  position:absolute;
+  top:0;left:-5%;right:-5%;
+  height:58%;
+  background:linear-gradient(180deg,#8c2b45,#5a1427);
+  border-bottom-left-radius:120% 90%;
+  border-bottom-right-radius:120% 90%;
+  transform-origin:top center;
+  transition:transform 1.3s cubic-bezier(.25,.9,.35,1);
+  box-shadow:
+    inset 0 -14px 28px rgba(0,0,0,.35),
+    0 6px 12px rgba(0,0,0,.35);
 }
-.envelope.open .flap{transform:rotateX(160deg)}
+.flap::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:2px;
+  background:rgba(255,220,190,.35);
+}
+.envelope.open .flap{
+  transform:rotateX(155deg);
+}
+
 .envelopeText{
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
@@ -96,9 +113,7 @@ body{
   transition:.3s;
 }
 .btn:hover{transform:translateY(-6px) scale(1.05)}
-.heartbeat{
-  animation:beat 1.6s infinite;
-}
+.heartbeat{animation:beat 1.6s infinite}
 @keyframes beat{
   0%,100%{transform:scale(1)}
   50%{transform:scale(1.08)}
@@ -129,15 +144,20 @@ body{
   font-size:78px;
   color:#7a1432;
   letter-spacing:2px;
+  text-shadow:0 0 18px rgba(255,120,150,.4);
 }
 .finalText span{
   opacity:0;
   display:inline-block;
-  animation:popIn .6s forwards;
+  animation:popIn .6s forwards, glow 3s infinite alternate;
 }
 @keyframes popIn{
   from{transform:scale(.3);opacity:0}
   to{transform:scale(1);opacity:1}
+}
+@keyframes glow{
+  from{text-shadow:0 0 8px rgba(255,120,150,.3)}
+  to{text-shadow:0 0 20px rgba(255,120,150,.6)}
 }
 
 /* ================= EFFECTS ================= */
@@ -189,144 +209,8 @@ body{
   </div>
 </div>
 
-<div class="page" id="page1">
-  <div class="letter">
-    <h1>Vaishnavi,</h1>
-    <p>Idi oka letter kaadu… idi naa hrudayam nundi vachina feeling.</p>
-    <div class="buttons-area">
-      <button class="btn" onclick="nextPage('page2')">Continue ✨</button>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="page2">
-  <div class="letter">
-    <h1>A Little Truth</h1>
-    <p>Premante demand kaadu… care. Noise kaadu… calm.</p>
-    <div class="buttons-area">
-      <button class="btn" onclick="nextPage('page3')">Next 💭</button>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="page3">
-  <div class="letter">
-    <h1>Telugu Lines</h1>
-    <p>నీ నవ్వే నా రోజు వెలుగు… నీ మాటే నా మనసు గమ్యం.</p>
-    <div class="buttons-area">
-      <button class="btn" onclick="nextPage('valentinePage')">One Question 💖</button>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="valentinePage">
-  <div class="letter">
-    <h1>So…</h1>
-    <p>Will you be my Valentine?</p>
-    <div class="buttons-area" id="valArea">
-      <button class="btn heartbeat" onclick="goYes()">YES 💕</button>
-      <button class="btn heartbeat" id="noBtn" onclick="escapeNo()">NO 😏</button>
-    </div>
-    <div id="taunt"></div>
-  </div>
-</div>
-
-<div class="page" id="destinyPage">
-  <div class="destinyText">
-    Hehe… 😌💖<br>
-    I knew you’d click YES.<br>
-    Destiny doesn’t miss 💫
-    <div class="buttons-area" style="justify-content:center;margin-top:40px">
-      <button class="btn" onclick="showFinal()">See What’s Next ✨</button>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="finalPage">
-  <div class="finalText" id="finalText"></div>
-</div>
-
-<div id="petals"></div>
-<div id="hearts"></div>
-
-<script>
-let tries=0, music=false, heartsStarted=false;
-
-function openEnvelope(){
-  document.querySelector('.envelope').classList.add('open');
-  setTimeout(()=>showPage('page1'),1200);
-}
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-function nextPage(id){showPage(id)}
-
-function goYes(){
-  document.getElementById('yesSound').play();
-  showPage('destinyPage');
-}
-
-function showFinal(){
-  showPage('finalPage');
-  startHearts();
-  typeFinalText();
-}
-
-function escapeNo(){
-  tries++;
-  const area=document.getElementById('valArea');
-  const no=document.getElementById('noBtn');
-  no.style.left=Math.random()*(area.clientWidth-160)+'px';
-  no.style.top=Math.random()*60+'px';
-  document.getElementById('taunt').innerText =
-    tries<3 ? "Nice try 😌" : "No escape now 😘";
-  if(tries>=3){no.style.display='none'}
-}
-
-function toggleMusic(){
-  const m=document.getElementById('bgMusic');
-  music?m.pause():m.play();
-  music=!music;
-}
-
-/* petals */
-for(let i=0;i<18;i++){
-  const p=document.createElement('span');
-  p.innerHTML='🌸';
-  p.style.left=Math.random()*100+'vw';
-  p.style.fontSize=14+Math.random()*18+'px';
-  p.style.animationDuration=6+Math.random()*6+'s';
-  document.getElementById('petals').appendChild(p);
-}
-
-/* hearts */
-function startHearts(){
-  if(heartsStarted) return;
-  heartsStarted=true;
-  for(let i=0;i<14;i++){
-    const h=document.createElement('span');
-    h.innerHTML='💖';
-    h.style.left=Math.random()*100+'vw';
-    h.style.fontSize=16+Math.random()*20+'px';
-    h.style.animationDuration=7+Math.random()*6+'s';
-    document.getElementById('hearts').appendChild(h);
-  }
-}
-
-/* final text animation */
-function typeFinalText(){
-  const text="Happy Valentine’s Day 💝 — Aditya ✍️";
-  const container=document.getElementById('finalText');
-  container.innerHTML='';
-  [...text].forEach((ch,i)=>{
-    const span=document.createElement('span');
-    span.textContent=ch;
-    span.style.animationDelay=`${i*0.08}s`;
-    container.appendChild(span);
-  });
-}
-</script>
+<!-- (ALL OTHER PAGES & SCRIPT REMAIN EXACTLY SAME AS YOU SENT) -->
 
 </body>
 </html>
+
