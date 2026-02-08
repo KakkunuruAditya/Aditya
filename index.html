@@ -385,7 +385,35 @@ button:hover{
   color:#5a1a1a;
 }
     
+.choice-buttons{
+  display:flex;
+  gap:24px;
+  justify-content:center;
+  margin-top:30px;
+}
 
+.choice-buttons button{
+  padding:14px 34px;
+  font-size:18px;
+  border-radius:40px;
+  border:none;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+#yesBtn{
+  background:linear-gradient(135deg,#ff8fb1,#ff5c8a);
+  color:white;
+  box-shadow:0 10px 30px rgba(255,92,138,0.35);
+}
+
+#noBtn{
+  background:rgba(255,255,255,0.15);
+  color:white;
+  border:1px solid rgba(255,255,255,0.3);
+  backdrop-filter:blur(6px);
+}
+    
     
 </style>
 </head>
@@ -447,12 +475,17 @@ button:hover{
 <span style="font-size:30px; font-weight:600;">Will you be my Valentine?</span>
 
 
-        
-        <div class="buttons-area">
-            <button id="noBtn" onclick="escapeNo()">No</button>
-            <button id="yesBtn" onclick="go(4)">Yes 💖</button>
-        </div>
 
+<div class="choice-buttons">
+  <button id="yesBtn" onclick="go(4)">Yes 💖</button>
+  <button id="noBtn" onclick="escapeNo()">No 💔</button>
+</div>
+        
+
+
+
+
+        
         <div id="taunt"></div>
     </div>
 </div>
@@ -556,6 +589,7 @@ function openLetter(){
     
 </body>
 </html>
+
 
 
 
