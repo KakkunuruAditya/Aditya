@@ -119,6 +119,58 @@ body{
   font-size:22px; cursor:pointer;
   box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
+
+
+/* Angelic Photo Page */
+.angel-page {
+  background: radial-gradient(circle at top, #fff8f0, #f2e6d8);
+  text-align: center;
+  position: relative;
+}
+
+.angel-overlay {
+  position: absolute;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
+  opacity: 0.15;
+}
+
+.angel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #6b4a2d;
+  margin-bottom: 30px;
+}
+
+.angel-frame {
+  width: 260px;
+  height: 360px;
+  margin: auto;
+  padding: 14px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fff, #e9dccb);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+}
+
+.angel-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  filter: brightness(1.05) contrast(1.05);
+}
+
+.angel-text {
+  margin-top: 28px;
+  font-size: 1.1rem;
+  color: #5a4633;
+  line-height: 1.8;
+}
+
+
+
+
+  
 </style>
 </head>
 <body>
@@ -228,7 +280,15 @@ for(let i=0;i<18;i++){
   p.style.animationDelay=Math.random()*5+'s';
   document.getElementById('petals').appendChild(p);
 }
+
+
+
+
+
+
+  
 </script>
 
 </body>
 </html>
+
