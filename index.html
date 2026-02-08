@@ -1,595 +1,231 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Valentine 💖</title>
+<title>For You ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;}
-
-body{
+*{
+    box-sizing:border-box;
     margin:0;
-    height:100vh;
-    background:radial-gradient(circle at top,#fff1f5,#f6dbe2);
-    font-family:'Cormorant Garamond',serif;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    padding:0;
+    font-family:'Playfair Display', serif;
 }
 
+body{
+    height:100vh;
+    background:radial-gradient(circle at top,#2b0a16,#0b0206);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    color:#fff;
+}
+
+/* ----------------- ENVELOPE PAGE ----------------- */
+#envelopePage{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,#3b0f1f,#120308);
+}
+
+.envelope{
+    width:320px;
+    height:220px;
+    background:#8b5a2b;
+    position:relative;
+    cursor:pointer;
+    border-radius:12px;
+    box-shadow:0 25px 60px rgba(0,0,0,.6);
+    transition:transform .6s ease;
+}
+
+.envelope:hover{
+    transform:scale(1.05);
+}
+
+.flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#a06a3b;
+    clip-path:polygon(0 0,100% 0,50% 55%);
+    transform-origin:top;
+    transition:transform 1s ease;
+}
+
+.envelope.open .flap{
+    transform:rotateX(160deg);
+}
+
+.seal{
+    position:absolute;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+    width:50px;
+    height:50px;
+    background:#7a1c2e;
+    border-radius:50%;
+    box-shadow:0 0 10px rgba(0,0,0,.6);
+}
+
+/* ----------------- PAGES ----------------- */
 .page{
     position:absolute;
     inset:0;
-    display:flex;
-    justify-content:center;
+    display:none;
     align-items:center;
-    opacity:0;
-    pointer-events:none;
-    transform:scale(1.05);
-    transition:opacity 1.2s ease, transform 1.2s ease;
+    justify-content:center;
 }
 
 .page.active{
-    opacity:1;
-    pointer-events:auto;
-    transform:scale(1);
+    display:flex;
 }
-
 
 .card{
-    width:460px;
-    padding:60px 50px;
-    background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.35), transparent 40%),
-        radial-gradient(circle at bottom right, rgba(0,0,0,0.08), transparent 45%),
-        linear-gradient(135deg, #f3e2c7, #e6cfa8 45%, #d2b48c);
-    border-radius:18px;
-    box-shadow:
-        inset 0 0 40px rgba(90,60,30,0.35),
-        0 35px 80px rgba(0,0,0,0.25);
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(16px);
+    padding:45px;
+    border-radius:22px;
     text-align:center;
-    position:relative;
+    max-width:420px;
+    width:90%;
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
 }
 
-/* Burnt edges illusion */
-.card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:18px;
-    background:linear-gradient(
-        to bottom,
-        rgba(90,50,20,0.35),
-        transparent 18%,
-        transparent 82%,
-        rgba(90,50,20,0.35)
-    );
-    pointer-events:none;
-}
-
-
-
-.card p{
-    font-family:'Parisienne', cursive;
-    font-size:26px;
-    line-height:1.8;
-    color:#4b2e1e;
-    letter-spacing:0.6px;
-    text-shadow:0 1px 0 rgba(255,255,255,0.4);
-}
-
-.card h1{
-    font-family:'Cormorant Garamond', serif;
-    font-size:34px;
-    color:#6b2f1a;
-    margin-bottom:20px;
-}
-
-
-
-
-
-    
-
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-h1{
-    font-family:'Playfair Display',serif;
-    color:#7b1c3a;
+/* ----------------- TEXT ----------------- */
+.question{
     font-size:32px;
-    margin-top:0;
+    margin-bottom:25px;
 }
 
-p{
-    font-size:18px;
-    color:#555;
-    line-height:1.7;
+.taunt{
+    margin-top:15px;
+    min-height:24px;
+    font-style:italic;
+    opacity:.85;
 }
 
-button{
-    margin-top:28px;
-    padding:12px 36px;
-    border:none;
-    border-radius:999px;
-    font-size:16px;
-    cursor:pointer;
-    background:linear-gradient(135deg,#b76e79,#d4a5a5);
-    color:white;
-    box-shadow:0 10px 30px rgba(183,110,121,.45);
-    transition:.3s;
-}
-
-button:hover{
-    transform:translateY(-4px);
-}
-
+/* ----------------- BUTTONS ----------------- */
 .buttons-area{
     position:relative;
-    height:120px;
+    height:80px;
     margin-top:30px;
 }
 
-
-    
-#taunt{
-    margin-top:18px;
-    min-height:26px;
-    color:#7b1c3a;
-    font-weight:600;
-}
-
-.hearts span{
-    position:fixed;
-    bottom:-20px;
-    animation:float 7s linear infinite;
-    opacity:.35;
-}
-
-@keyframes float{
-    to{transform:translateY(-120vh);}
-}
-
-/* FINAL PAGE */
-.final{
-    font-family:'Parisienne',cursive;
-    font-size:56px;
-    color:#8b1c3c;
-    animation:zoomBloom 3s ease forwards;
-    transform:scale(0.3);
-    opacity:0;
-}
-
-@keyframes zoomBloom{
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
-}
-
-
-/* FULL SCREEN OVERLAY */
-#letterOverlay{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at top,#2b2b2b,#111);  
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  transition:opacity 1s ease;
-}
-
-
-#letterOverlay{
-  background: radial-gradient();
-}
-    
-
-    
-    
-/* ENVELOPE BODY */
-.envelope{
-  width:320px;
-  height:220px;
-  transform: scale(1);
-  background:linear-gradient(135deg,#d2b48c,#b8966e);
-  border-radius:10px;
-  position:relative;
-  box-shadow:0 25px 60px rgba(0,0,0,0.6);
-  cursor:pointer;
-  animation:softFloat 3s ease-in-out infinite;
-}
-
-/* ENVELOPE FLAP */
-.flap{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:linear-gradient(135deg,#c8a97e,#a9825c);
-  clip-path:polygon(0 0,100% 0,50% 55%);
-  transform-origin:top;
-  transition:transform 1s ease;
-}
-
-/* SEAL */
-.seal{
-  position:absolute;
-  bottom:40px;
-  left:50%;
-  transform:translateX(-50%);
-  width:42px;
-  height:42px;
-  background:#7b1e1e;
-  border-radius:50%;
-  color:#fff;
-  font-size:20px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  box-shadow:0 6px 12px rgba(0,0,0,0.4);
-}
-
-/* TAP TEXT */
-.tapText{
-  position:absolute;
-  bottom:-45px;
-  width:100%;
-  text-align:center;
-  color:#f5e8d6;
-  font-family:'Cormorant Garamond',serif;
-  letter-spacing:2px;
-  font-size:18px;
-}
-
-/* OPEN STATE */
-.open .flap{
-  transform:rotateX(180deg);
-}
-
-.final-text{
-  opacity:0;
-  transform:scale(0.6);
-  transition:1s ease;
-}
-
-.final-text.reveal{
-  opacity:1;
-  transform:scale(1);
-}
-    
-
-    
-/* FLOATING EFFECT */
-@keyframes softFloat{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-12px);}
-}
-
-
-.envelope.open .flap{
-  transform: rotateX(180deg);
-}
-
-.envelope.open{
-  transform: scale(1.15);
-}
-
-#letterOverlay.fadeOut{
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1.2s ease;
-}
-
-
-#box.show{
-  opacity: 1;
-  transform: scale(1);
-}
-
-#box{
-  width: 460px;          /* premium dialog size */
-  padding: 55px;
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 1.2s ease;
-  background: rgba(255,248,235,0.95);
-  box-shadow:
-    0 30px 60px rgba(0,0,0,0.25),
-    inset 0 0 40px rgba(255,255,255,0.4);
-}
-
-
-    .ink-text{
-  font-family: 'Cursive', 'Brush Script MT', serif;
-  font-size: 18px;
-  color: #3b2f2f;
-  line-height: 1.8;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid rgba(0,0,0,0.4);
-  animation: typing 6s steps(80,end), blink .7s infinite;
-}
-
-@keyframes typing{
-  from{ width:0 }
-  to{ width:100% }
-}
-
-@keyframes blink{
-  50%{ border-color:transparent }
-}
-
-
-    @keyframes paperFloat{
-  0%{ transform: translateY(0) }
-  50%{ transform: translateY(-6px) }
-  100%{ transform: translateY(0) }
-}
-
-#box{
-  animation: paperFloat 6s ease-in-out infinite;
-}
-    
-#finalPage{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle,#ffdde1,#ee9ca7);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  opacity:0;
-  pointer-events:none;
-  transform:scale(0.2);
-  transition:all 2.5s ease;
-}
-
-#finalPage.show{
-  opacity:1;
-  pointer-events:auto;
-  transform:scale(1);
-}
-
-#finalPage h1{
-  font-size:48px;
-  font-family:'Brush Script MT',cursive;
-  color:#7a1c2f;
-  text-shadow:0 10px 30px rgba(0,0,0,.25);
-}
-
-#finalPage p{
-  font-size:20px;
-  letter-spacing:2px;
-  color:#5a1a1a;
-}
-    
-.choice-buttons{
-  display:flex;
-  gap:24px;
-  justify-content:center;
-  margin-top:30px;
-}
-
-.choice-buttons button{
-  padding:14px 34px;
-  font-size:18px;
-  border-radius:40px;
-  border:none;
-  cursor:pointer;
-  transition:0.3s ease;
+button{
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
 }
 
 #yesBtn{
-  background:linear-gradient(135deg,#ff8fb1,#ff5c8a);
-  color:white;
-  box-shadow:0 10px 30px rgba(255,92,138,0.35);
+    background:linear-gradient(135deg,#ff5c8a,#ff8fab);
+    color:#fff;
+    margin-right:15px;
 }
 
 #noBtn{
-  background:rgba(255,255,255,0.15);
-  color:white;
-  border:1px solid rgba(255,255,255,0.3);
-  backdrop-filter:blur(6px);
+    position:absolute;
+    left:0;
+    background:#f3d0d8;
+    color:#6a1b3a;
 }
-    
-    
+
+/* ----------------- FINAL PAGE ----------------- */
+.final-text{
+    font-family:'Great Vibes', cursive;
+    font-size:60px;
+    animation:zoomOut 2.2s ease forwards;
+}
+
+@keyframes zoomOut{
+    from{transform:scale(.2);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
 </style>
 </head>
 
 <body>
 
-<!-- Letter Overlay -->
-<div id="letterOverlay">
-  <div class="envelope" onclick="openLetter()">
-    <div class="flap"></div>
-    <div class="seal">❤</div>
-    <p class="tapText">Tap to open</p>
-  </div>
+<!-- Envelope -->
+<div id="envelopePage">
+    <div class="envelope" onclick="openLetter()">
+        <div class="flap"></div>
+        <div class="seal"></div>
+    </div>
 </div>
 
-
-
-    
-<!-- PAGE 1 -->
-<div class="page active">
+<!-- Valentine Question -->
+<div id="page1" class="page">
     <div class="card">
-        <h1>Bonsoir… 🌹</h1>
-        <p class="ink-text">
-            Some feelings deserve<br>
-            softness, time, and intention.
-        </p>
-        <button onclick="go(1)">Enter ✨</button>
+        <div class="question">Will you be my Valentine? 💖</div>
+
+        <div class="buttons-area">
+            <button id="yesBtn" onclick="goFinal()">Yes 💕</button>
+            <button id="noBtn" onclick="escapeNo()">No</button>
+        </div>
+
+        <div id="taunt" class="taunt"></div>
     </div>
 </div>
 
-<!-- PAGE 2 -->
-<div class="page">
-    <div class="card">
-        <h1>A quiet confession</h1>
-        <p class="ink-text">
-            There’s elegance in simplicity.<br>
-            And beauty in the way you exist.
-        </p>
-        <button onclick="go(2)">Continue 🤍</button>
-    </div>
+<!-- Final Page -->
+<div id="finalPage" class="page">
+    <div class="final-text">Happy Valentine’s Day ❤️</div>
 </div>
-
-<!-- PAGE 3 -->
-<div class="page">
-    <div class="card">
-        <h1>Truth, gently spoken</h1>
-        <p class="ink-text">
-            Somewhere between moments,<br>
-            my heart chose you—naturally.
-        </p>
-        <button onclick="go(3)">One question… 💗</button>
-    </div>
-</div>
-
-<!-- PAGE 4 -->
-<div class="page">
-    <div class="card">
-        <h1>Will you…</h1>
-<span style="font-size:30px; font-weight:600;">Will you be my Valentine?</span>
-
-
-
-<div class="choice-buttons">
-  <button id="yesBtn" onclick="go(4)">Yes 💖</button>
-  <button id="noBtn" onclick="escapeNo()">No 💔</button>
-</div>
-        
-
-
-
-
-        
-        <div id="taunt"></div>
-    </div>
-</div>
-
-<!-- PAGE 5 -->
-<div class="page">
-    <div class="card">
-        <h1>You chose us 💞</h1>
-        <p class="ink-text">
-            And that choice means more<br>
-            than words ever could.
-        </p>
-        <button onclick="go(5)">One last thing… ✨</button>
-    </div>
-</div>
-
-<!-- PAGE 6 FINAL -->
-<div class="page">
-    <div class="final">
-        Happy Valentine’s Day Sweetheart💖
-    </div>
-</div>
-
-<div class="hearts"></div>
 
 <script>
-let pages=document.querySelectorAll('.page');
-let current=0;
-let tries=0;
+let tries = 0;
 
+/* Open envelope */
+function openLetter(){
+    const env = document.querySelector('.envelope');
+    env.classList.add('open');
 
-
-function go(n){
-    pages[current].classList.remove('active');
-    current=n;
-    pages[current].classList.add('active');
-  // existing code (keep it)
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("show"));
-  document.getElementById("page"+n).classList.add("show");
-
-  // ⭐ ADD THIS PART BELOW
-  if(n === 4){
-    // final Valentine magic
-    setTimeout(() => {
-      document.getElementById("finalMessage").classList.add("reveal");
-    }, 600);
-  }
+    setTimeout(()=>{
+        document.getElementById('envelopePage').style.display='none';
+        document.getElementById('page1').classList.add('active');
+    },1000);
 }
 
-
-
-    
+/* Escape NO */
 function escapeNo(){
     tries++;
 
     const area = document.querySelector('.buttons-area');
     const no = document.getElementById('noBtn');
 
-    // random movement inside buttons area
     no.style.left = Math.random() * (area.clientWidth - 90) + "px";
-    no.style.top  = Math.random() * 60 + "px";
+    no.style.top  = Math.random() * 50 + "px";
 
-    // playful taunts
     document.getElementById('taunt').innerText =
         tries < 3 ? "Not yet… 😌" : "You can’t escape fate.";
 
-    // after 3 tries, NO disappears
     if(tries >= 3){
         no.style.display = "none";
     }
 }
 
-
-for(let i=0;i<28;i++){
-    let s=document.createElement("span");
-    s.innerHTML="💗";
-    s.style.left=Math.random()*100+"vw";
-    s.style.fontSize=12+Math.random()*18+"px";
-    s.style.animationDuration=4+Math.random()*5+"s";
-    document.querySelector(".hearts").appendChild(s);
+/* YES → Final */
+function goFinal(){
+    document.getElementById('page1').classList.remove('active');
+    document.getElementById('finalPage').classList.add('active');
 }
-
-
-
-function openLetter(){
-  const env = document.querySelector(".envelope");
-  const overlay = document.getElementById("letterOverlay");
-  const box = document.getElementById("box");
-
-  env.classList.add("open");
-
-  setTimeout(()=>{
-    overlay.classList.add("fadeOut");
-    box.classList.add("show");
-  }, 700);
-      }
-    
-
-    
-    
 </script>
-<div id="finalMessage" class="final-text">
-  Happy Valentine’s Day 💖✨
-</div>
 
-    
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
