@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,6 +99,17 @@ body{
 }
 @keyframes zoomIn{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
 
+/* Rose petals */
+#petals span{
+  position:fixed;
+  top:-10vh;
+  animation:fall linear infinite;
+  opacity:.8;
+}
+@keyframes fall{
+  to{transform:translateY(120vh) rotate(360deg)}
+}to{transform:scale(1);opacity:1}}
+
 /* Music */
 .musicBtn{
   position:fixed; bottom:20px; right:20px;
@@ -190,9 +203,12 @@ body{
 </div>
 
 <div class="page" id="finalPage">
-  <div class="finalText">Happy Valentine’s Day 💝</div>
+  <div class="finalText">Happy Valentine’s Day Bangaram💝</div>
 </div>
 </div>
+
+<!-- ROSE PETALS -->
+<div id="petals"></div>
 
 <script>
 let tries=0, music=false;
@@ -201,6 +217,17 @@ function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.
 function nextPage(id){showPage(id)}
 function escapeNo(){tries++;const area=document.querySelector('.buttons-area');const no=document.getElementById('noBtn');no.style.left=Math.random()*(area.clientWidth-160)+'px';no.style.top=Math.random()*60+'px';document.getElementById('taunt').innerText=tries<3?'Nice try 😌':'No escape now 😘';if(tries>=3){no.style.display='none'}}
 function toggleMusic(){const m=document.getElementById('bgMusic');music?m.pause():m.play();music=!music}
+
+// Rose petals generation
+for(let i=0;i<18;i++){
+  const p=document.createElement('span');
+  p.innerHTML='🌸';
+  p.style.left=Math.random()*100+'vw';
+  p.style.fontSize=14+Math.random()*18+'px';
+  p.style.animationDuration=6+Math.random()*6+'s';
+  p.style.animationDelay=Math.random()*5+'s';
+  document.getElementById('petals').appendChild(p);
+}
 </script>
 
 </body>
