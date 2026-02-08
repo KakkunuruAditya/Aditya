@@ -336,6 +336,40 @@ button:hover{
   animation: paperFloat 6s ease-in-out infinite;
 }
     
+#finalPage{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#ffdde1,#ee9ca7);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transform:scale(0.2);
+  transition:all 2.5s ease;
+}
+
+#finalPage.show{
+  opacity:1;
+  pointer-events:auto;
+  transform:scale(1);
+}
+
+#finalPage h1{
+  font-size:48px;
+  font-family:'Brush Script MT',cursive;
+  color:#7a1c2f;
+  text-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+#finalPage p{
+  font-size:20px;
+  letter-spacing:2px;
+  color:#5a1a1a;
+}
+    
+
     
 </style>
 </head>
@@ -484,9 +518,14 @@ function openLetter(){
     
     
 </script>
-
+<div id="finalPage">
+  <h1>Happy Valentine’s Day 💖</h1>
+  <p>Forever & Always</p>
+</div>
+    
 </body>
 </html>
+
 
 
 
