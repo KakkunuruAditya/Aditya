@@ -434,21 +434,20 @@ for(let i=0;i<28;i++){
 }
 
 
+
 function openLetter(){
+  const env = document.querySelector(".envelope");
   const overlay = document.getElementById("letterOverlay");
-  const envelope = overlay.querySelector(".envelope");
+  const box = document.getElementById("box");
 
-  envelope.classList.add("open");
-
-  setTimeout(()=>{
-    overlay.style.opacity = "0";
-  },800);
+  env.classList.add("open");
 
   setTimeout(()=>{
-    overlay.style.display = "none";
-  },1600);
-}
-
+    overlay.classList.add("fadeOut");
+    box.classList.add("show");
+  }, 700);
+      }
+    
 
     
     
@@ -456,6 +455,7 @@ function openLetter(){
 
 </body>
 </html>
+
 
 
 
