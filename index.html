@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{box-sizing:border-box}
 body{
   margin:0;height:100vh;
   font-family:'Playfair Display',serif;
@@ -23,32 +23,44 @@ body{
 }
 .page.active{opacity:1;pointer-events:auto}
 
-/* Envelope */
-#envelopePage{background:radial-gradient(circle at top,#3a141b,#12070a)}
+/* ================= ROYAL ENVELOPE ================= */
+#envelopePage{
+  background:radial-gradient(circle at top,#3a141b,#12070a);
+}
 .envelope{
-  width:380px;height:260px;
-  background:linear-gradient(135deg,#8a4b32,#5a2b1c);
-  border-radius:22px;
+  width:420px;height:280px;
+  background:linear-gradient(145deg,#4a0f1f,#7b1e34,#4a0f1f);
+  border-radius:24px;
   position:relative;cursor:pointer;
-  box-shadow:0 35px 70px rgba(0,0,0,.7);
+  box-shadow:
+    0 40px 90px rgba(0,0,0,.8),
+    inset 0 0 0 3px rgba(255,215,180,.25);
+}
+.envelope:before{
+  content:'';
+  position:absolute;inset:14px;
+  border-radius:18px;
+  border:2px solid rgba(255,215,180,.35);
 }
 .flap{
   position:absolute;top:0;left:0;right:0;
-  height:60%;
-  background:linear-gradient(135deg,#9b563a,#6b3423);
+  height:62%;
+  background:linear-gradient(145deg,#6b1a2e,#a83b56);
   clip-path:polygon(0 0,100% 0,50% 100%);
   transform-origin:top;
   transition:transform 1.2s ease;
+  box-shadow:inset 0 -10px 20px rgba(0,0,0,.35);
 }
 .envelope.open .flap{transform:rotateX(160deg)}
 .envelopeText{
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
   font-family:'Great Vibes',cursive;
-  font-size:42px;color:#f7e6d2;
+  font-size:46px;color:#f8e4d2;
+  text-shadow:0 0 20px rgba(255,200,180,.5);
 }
 
-/* Letter */
+/* ================= LETTER ================= */
 .letter{
   width:90%;max-width:560px;
   background:radial-gradient(circle at top,#f7e6c4,#e7cfa2);
@@ -68,7 +80,7 @@ body{
 }
 .letter p{font-size:17px;line-height:1.9}
 
-/* Buttons */
+/* ================= BUTTONS ================= */
 .buttons-area{
   margin-top:35px;height:100px;
   position:relative;
@@ -81,59 +93,54 @@ body{
   cursor:pointer;color:white;
   background:linear-gradient(135deg,#a44a5d,#6e1f2c);
   box-shadow:0 12px 25px rgba(0,0,0,.35);
-  transition:.25s ease;
+  transition:.3s;
 }
-.btn:active{transform:scale(.96)}
-.btn:hover{transform:translateY(-4px) scale(1.03)}
+.btn:hover{transform:translateY(-6px) scale(1.05)}
+.heartbeat{
+  animation:beat 1.6s infinite;
+}
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+}
 #noBtn{position:absolute;right:0}
 #taunt{margin-top:18px;font-weight:600;color:#6e1f2c;min-height:26px}
 
-/* YES heartbeat */
-.yes-heartbeat{
-  animation:heartbeat 1.4s ease-in-out infinite;
-}
-@keyframes heartbeat{
-  0%{transform:scale(1)}
-  25%{transform:scale(1.08)}
-  40%{transform:scale(1)}
-  60%{transform:scale(1.12)}
-  100%{transform:scale(1)}
-}
-
-/* Destiny & Final */
-#destinyPage,#finalPage{
+/* ================= DESTINY & FINAL ================= */
+#destinyPage,
+#finalPage{
   background:radial-gradient(circle,#ffdde1,#ee9ca7);
 }
 .destinyText{
   text-align:center;
   font-family:'Great Vibes',cursive;
-  font-size:56px;color:#7a1432;
+  font-size:56px;
+  color:#7a1432;
   animation:fadeUp 1.6s ease forwards;
 }
-.finalText{
-  font-family:'Great Vibes',cursive;
-  font-size:78px;color:#7a1432;
-  animation:finalGlow 3s ease-in-out infinite;
-}
-.signature{
-  margin-top:30px;
-  font-size:28px;
-  font-family:'Great Vibes',cursive;
-  color:#7a1432;
-  opacity:.85;
-}
-
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(30px)}
   to{opacity:1;transform:translateY(0)}
 }
-@keyframes finalGlow{
-  0%{text-shadow:0 0 10px rgba(255,180,200,.3)}
-  50%{text-shadow:0 0 45px rgba(255,180,200,.9)}
-  100%{text-shadow:0 0 10px rgba(255,180,200,.3)}
+
+/* FINAL TEXT SPECIAL EFFECT */
+.finalText{
+  font-family:'Great Vibes',cursive;
+  font-size:78px;
+  color:#7a1432;
+  letter-spacing:2px;
+}
+.finalText span{
+  opacity:0;
+  display:inline-block;
+  animation:popIn .6s forwards;
+}
+@keyframes popIn{
+  from{transform:scale(.3);opacity:0}
+  to{transform:scale(1);opacity:1}
 }
 
-/* Petals */
+/* ================= EFFECTS ================= */
 #petals span{
   position:fixed;top:-10vh;
   animation:fall linear infinite;
@@ -142,8 +149,6 @@ body{
 @keyframes fall{
   to{transform:translateY(120vh) rotate(360deg)}
 }
-
-/* Hearts only final */
 #hearts span{
   position:fixed;bottom:-10vh;
   animation:rise linear infinite;
@@ -153,7 +158,7 @@ body{
   to{transform:translateY(-120vh) scale(1.2);opacity:0}
 }
 
-/* Music */
+/* ================= MUSIC ================= */
 .musicBtn{
   position:fixed;bottom:20px;right:20px;
   background:#6e1f2c;color:white;
@@ -171,8 +176,8 @@ body{
   <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_eb4c74f2d7.mp3">
 </audio>
 
-<audio id="yesBell">
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3bfa8f07b1.mp3">
+<audio id="yesSound">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3b7b3e1a3c.mp3">
 </audio>
 
 <button class="musicBtn" onclick="toggleMusic()">🎶</button>
@@ -219,8 +224,8 @@ body{
     <h1>So…</h1>
     <p>Will you be my Valentine?</p>
     <div class="buttons-area" id="valArea">
-      <button class="btn yes-heartbeat" id="yesBtn" onclick="goYes()">YES 💕</button>
-      <button class="btn" id="noBtn" onclick="escapeNo()">NO 😏</button>
+      <button class="btn heartbeat" onclick="goYes()">YES 💕</button>
+      <button class="btn heartbeat" id="noBtn" onclick="escapeNo()">NO 😏</button>
     </div>
     <div id="taunt"></div>
   </div>
@@ -228,25 +233,24 @@ body{
 
 <div class="page" id="destinyPage">
   <div class="destinyText">
-    Hehe… 😌💖<br>I knew you’d click YES.<br>Destiny doesn’t miss 💫
+    Hehe… 😌💖<br>
+    I knew you’d click YES.<br>
+    Destiny doesn’t miss 💫
     <div class="buttons-area" style="justify-content:center;margin-top:40px">
-      <button class="btn" onclick="nextPage('finalPage')">See What’s Next ✨</button>
+      <button class="btn" onclick="showFinal()">See What’s Next ✨</button>
     </div>
   </div>
 </div>
 
 <div class="page" id="finalPage">
-  <div>
-    <div class="finalText">Happy Valentine’s Day 💝</div>
-    <div class="signature">— Aditya ✍️</div>
-  </div>
+  <div class="finalText" id="finalText"></div>
 </div>
 
 <div id="petals"></div>
 <div id="hearts"></div>
 
 <script>
-let tries=0,music=false,heartsStarted=false;
+let tries=0, music=false, heartsStarted=false;
 
 function openEnvelope(){
   document.querySelector('.envelope').classList.add('open');
@@ -256,15 +260,19 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-function nextPage(id){
-  showPage(id);
-  if(id==='finalPage') startHearts();
-}
+function nextPage(id){showPage(id)}
+
 function goYes(){
-  document.getElementById('yesBtn').classList.remove('yes-heartbeat');
-  document.getElementById('yesBell').play();
+  document.getElementById('yesSound').play();
   showPage('destinyPage');
 }
+
+function showFinal(){
+  showPage('finalPage');
+  startHearts();
+  typeFinalText();
+}
+
 function escapeNo(){
   tries++;
   const area=document.getElementById('valArea');
@@ -272,13 +280,17 @@ function escapeNo(){
   no.style.left=Math.random()*(area.clientWidth-160)+'px';
   no.style.top=Math.random()*60+'px';
   document.getElementById('taunt').innerText =
-    tries<3?"Nice try 😌":"No escape now 😘";
-  if(tries>=3) no.style.display='none';
+    tries<3 ? "Nice try 😌" : "No escape now 😘";
+  if(tries>=3){no.style.display='none'}
 }
+
 function toggleMusic(){
   const m=document.getElementById('bgMusic');
-  music?m.pause():m.play();music=!music;
+  music?m.pause():m.play();
+  music=!music;
 }
+
+/* petals */
 for(let i=0;i<18;i++){
   const p=document.createElement('span');
   p.innerHTML='🌸';
@@ -287,6 +299,8 @@ for(let i=0;i<18;i++){
   p.style.animationDuration=6+Math.random()*6+'s';
   document.getElementById('petals').appendChild(p);
 }
+
+/* hearts */
 function startHearts(){
   if(heartsStarted) return;
   heartsStarted=true;
@@ -298,6 +312,19 @@ function startHearts(){
     h.style.animationDuration=7+Math.random()*6+'s';
     document.getElementById('hearts').appendChild(h);
   }
+}
+
+/* final text animation */
+function typeFinalText(){
+  const text="Happy Valentine’s Day 💝 — Aditya ✍️";
+  const container=document.getElementById('finalText');
+  container.innerHTML='';
+  [...text].forEach((ch,i)=>{
+    const span=document.createElement('span');
+    span.textContent=ch;
+    span.style.animationDelay=`${i*0.08}s`;
+    container.appendChild(span);
+  });
 }
 </script>
 
