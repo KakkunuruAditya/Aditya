@@ -268,6 +268,19 @@ button:hover{
   transform:rotateX(180deg);
 }
 
+.final-text{
+  opacity:0;
+  transform:scale(0.6);
+  transition:1s ease;
+}
+
+.final-text.reveal{
+  opacity:1;
+  transform:scale(1);
+}
+    
+
+    
 /* FLOATING EFFECT */
 @keyframes softFloat{
   0%,100%{transform:translateY(0);}
@@ -536,22 +549,13 @@ function openLetter(){
     
     
 </script>
-<div id="finalPage">
-  <h1>Happy Valentine’s Day 💖</h1>
-  <p>Forever & Always</p>
+<div id="finalMessage" class="final-text">
+  Happy Valentine’s Day 💖✨
 </div>
+
     
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 
