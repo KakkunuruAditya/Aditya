@@ -87,9 +87,9 @@ body{
 #noBtn{position:absolute;right:0}
 #taunt{margin-top:18px;font-weight:600;color:#6e1f2c;min-height:26px}
 
-/* Destiny Page */
-/* Destiny Page */
-#destinyPage{
+/* Destiny + Final */
+#destinyPage,
+#finalPage{
   background:radial-gradient(circle,#ffdde1,#ee9ca7);
 }
 .destinyText{
@@ -99,14 +99,6 @@ body{
   color:#7a1432;
   animation:fadeUp 1.6s ease forwards;
 }
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-
-/* Final */
-#finalPage{background:radial-gradient(circle,#ffdde1,#ee9ca7)}
 .finalText{
   font-family:'Great Vibes',cursive;
   font-size:78px;color:#7a1432;
@@ -115,6 +107,10 @@ body{
 @keyframes zoomIn{
   from{transform:scale(.2);opacity:0}
   to{transform:scale(1);opacity:1}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 /* Petals */
@@ -125,6 +121,17 @@ body{
 }
 @keyframes fall{
   to{transform:translateY(120vh) rotate(360deg)}
+}
+
+/* Hearts */
+#hearts span{
+  position:fixed;
+  bottom:-10vh;
+  animation:rise linear infinite;
+  opacity:.6;
+}
+@keyframes rise{
+  to{transform:translateY(-120vh) scale(1.2);opacity:0}
 }
 
 /* Music */
@@ -146,6 +153,7 @@ body{
 </audio>
 <button class="musicBtn" onclick="toggleMusic()">🎶</button>
 
+<!-- ENVELOPE -->
 <div class="page active" id="envelopePage">
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap"></div>
@@ -153,6 +161,7 @@ body{
   </div>
 </div>
 
+<!-- STORY -->
 <div class="page" id="page1">
   <div class="letter">
     <h1>Vaishnavi,</h1>
@@ -188,26 +197,32 @@ body{
     <h1>So…</h1>
     <p>Will you be my Valentine?</p>
     <div class="buttons-area" id="valArea">
-      <button class="btn" id="yesBtn" onclick="nextPage('destinyPage')">YES 💕</button>
+      <button class="btn" onclick="nextPage('destinyPage')">YES 💕</button>
       <button class="btn" id="noBtn" onclick="escapeNo()">NO 😏</button>
     </div>
     <div id="taunt"></div>
   </div>
 </div>
 
-<!-- NEW DESTINY PAGE -->
+<!-- DESTINY PAGE -->
 <div class="page" id="destinyPage">
   <div class="destinyText">
-    Hehe… I knew you’d click YES 😌<br>
-    Some things are just destiny 💫
+    Hehe… 😌💖<br>
+    I knew you’d click YES.<br>
+    Destiny doesn’t miss 💫
+    <div class="buttons-area" style="justify-content:center;margin-top:40px">
+      <button class="btn" onclick="nextPage('finalPage')">See What’s Next ✨</button>
+    </div>
   </div>
 </div>
 
+<!-- FINAL -->
 <div class="page" id="finalPage">
   <div class="finalText">Happy Valentine’s Day 💝</div>
 </div>
 
 <div id="petals"></div>
+<div id="hearts"></div>
 
 <script>
 let tries=0, music=false;
@@ -220,12 +235,7 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-function nextPage(id){
-  showPage(id);
-  if(id==='destinyPage'){
-    setTimeout(()=>showPage('finalPage'),2200);
-  }
-}
+function nextPage(id){showPage(id)}
 
 function escapeNo(){
   tries++;
@@ -244,6 +254,7 @@ function toggleMusic(){
   music=!music;
 }
 
+/* petals */
 for(let i=0;i<18;i++){
   const p=document.createElement('span');
   p.innerHTML='🌸';
@@ -252,9 +263,17 @@ for(let i=0;i<18;i++){
   p.style.animationDuration=6+Math.random()*6+'s';
   document.getElementById('petals').appendChild(p);
 }
+
+/* hearts */
+for(let i=0;i<14;i++){
+  const h=document.createElement('span');
+  h.innerHTML='💖';
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize=16+Math.random()*20+'px';
+  h.style.animationDuration=7+Math.random()*6+'s';
+  document.getElementById('hearts').appendChild(h);
+}
 </script>
 
 </body>
 </html>
-
-
