@@ -270,6 +270,18 @@ button:hover{
 
 <body>
 
+<!-- Letter Overlay -->
+<div id="letterOverlay">
+  <div class="envelope" onclick="openLetter()">
+    <div class="flap"></div>
+    <div class="seal">❤</div>
+    <p class="tapText">Tap to open</p>
+  </div>
+</div>
+
+
+
+    
 <!-- PAGE 1 -->
 <div class="page active">
     <div class="card">
@@ -384,9 +396,30 @@ for(let i=0;i<28;i++){
     s.style.animationDuration=4+Math.random()*5+"s";
     document.querySelector(".hearts").appendChild(s);
 }
+
+
+function openLetter(){
+  const overlay = document.getElementById("letterOverlay");
+  const envelope = overlay.querySelector(".envelope");
+
+  envelope.classList.add("open");
+
+  setTimeout(()=>{
+    overlay.style.opacity = "0";
+  },800);
+
+  setTimeout(()=>{
+    overlay.style.display = "none";
+  },1600);
+}
+
+
+    
+    
 </script>
 
 </body>
 </html>
+
 
 
