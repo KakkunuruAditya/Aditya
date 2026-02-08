@@ -470,12 +470,27 @@ let pages=document.querySelectorAll('.page');
 let current=0;
 let tries=0;
 
+
+
 function go(n){
     pages[current].classList.remove('active');
     current=n;
     pages[current].classList.add('active');
-}
+  // existing code (keep it)
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("show"));
+  document.getElementById("page"+n).classList.add("show");
 
+  // ⭐ ADD THIS PART BELOW
+  if(n === 4){
+    // final Valentine magic
+    setTimeout(() => {
+      document.getElementById("finalMessage").classList.add("reveal");
+    }, 600);
+  }
+}
+    
+
+    
 function escapeNo(){
     tries++;
     const area=document.querySelector('.buttons-area');
@@ -528,6 +543,7 @@ function openLetter(){
     
 </body>
 </html>
+
 
 
 
