@@ -136,19 +136,6 @@ button:hover{
     margin-top:30px;
 }
 
-#noBtn{
-    position:absolute;
-    left:0;
-    background:#f3d0d8;
-    color:#6a1b3a;
-}
-
-#yesBtn{
-    display:none;
-    background:linear-gradient(135deg,#8e244d,#b3395a);
-}
-
-
 
     
 #taunt{
@@ -540,20 +527,24 @@ function go(n){
     
 function escapeNo(){
     tries++;
-    const area=document.querySelector('.buttons-area');
-    const no=document.getElementById('noBtn');
 
-    no.style.left=Math.random()*(area.clientWidth-90)+"px";
-    no.style.top=Math.random()*60+"px";
+    const area = document.querySelector('.buttons-area');
+    const no = document.getElementById('noBtn');
 
+    // random movement inside buttons area
+    no.style.left = Math.random() * (area.clientWidth - 90) + "px";
+    no.style.top  = Math.random() * 60 + "px";
+
+    // playful taunts
     document.getElementById('taunt').innerText =
-        tries<3 ? "Not yet… 😌" : "You can’t escape fate.";
+        tries < 3 ? "Not yet… 😌" : "You can’t escape fate.";
 
-    if(tries>=3){
-        no.style.display="none";
-        document.getElementById('yesBtn').style.display="inline-block";
+    // after 3 tries, NO disappears
+    if(tries >= 3){
+        no.style.display = "none";
     }
 }
+
 
 for(let i=0;i<28;i++){
     let s=document.createElement("span");
@@ -590,6 +581,7 @@ function openLetter(){
     
 </body>
 </html>
+
 
 
 
