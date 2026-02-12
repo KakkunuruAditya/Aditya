@@ -191,6 +191,66 @@ body{
   font-size:22px;cursor:pointer;
   box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
+
+
+
+
+
+
+/* ================= LUXURY CURTAIN INTRO ================= */
+#curtain{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  pointer-events:auto;
+}
+
+.curtain{
+  width:50%;
+  height:100%;
+  background:
+    linear-gradient(
+      to right,
+      #3a0f1c,
+      #6b1a2e,
+      #3a0f1c
+    );
+  box-shadow:
+    inset -20px 0 40px rgba(0,0,0,.6),
+    inset 20px 0 40px rgba(0,0,0,.6);
+  transition:transform 1.4s cubic-bezier(.77,0,.18,1);
+}
+
+/* folds illusion */
+.curtain:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,.04) 0px,
+      rgba(255,255,255,.04) 6px,
+      transparent 6px,
+      transparent 14px
+    );
+  opacity:.25;
+}
+
+.curtain.left{transform:translateX(0)}
+.curtain.right{transform:translateX(0)}
+
+#curtain.open .left{
+  transform:translateX(-100%);
+}
+#curtain.open .right{
+  transform:translateX(100%);
+}
+
+
+  
+  
 </style>
 </head>
 
@@ -365,6 +425,7 @@ function typeFinalText(){
 
 </body>
 </html>
+
 
 
 
