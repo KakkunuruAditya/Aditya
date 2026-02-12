@@ -207,19 +207,7 @@ body{
   overflow:hidden;
 }
 
-/* soft spotlight glow */
-.spotlight{
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(255,210,200,.35),
-      rgba(0,0,0,.85) 65%
-    );
-  opacity:0;
-  transition:opacity 1.2s ease;
-}
+
 
 /* TOP SWAG CURTAIN */
 .topCurtain{
@@ -293,10 +281,6 @@ body{
 #curtainStage.open .right{
   transform:translateX(75%);
 }
-#curtainStage.open .spotlight{
-  opacity:1;
-}
-
 
   
   
@@ -310,7 +294,7 @@ body{
 
 <!-- THEATRE CURTAIN INTRO -->
 <div id="curtainStage">
-  <div class="spotlight"></div>
+  
 
   <!-- top swag curtain -->
   <div class="topCurtain"></div>
@@ -513,3 +497,4 @@ curtainStage.addEventListener('click', () => {
 
 </body>
 </html>
+
