@@ -491,18 +491,20 @@ function typeFinalText(){
 
 
 
-/* CURTAIN OPEN ON FIRST TAP */
-const curtain = document.getElementById('curtain');
+/* THEATRE CURTAIN OPEN */
+const curtainStage = document.getElementById('curtainStage');
+const curtainSound = document.getElementById('curtainSound');
 
-curtain.addEventListener('click', () => {
-  curtain.classList.add('open');
+curtainStage.addEventListener('click', () => {
+  curtainSound.volume = 0.4;
+  curtainSound.play();
+
+  curtainStage.classList.add('open');
 
   setTimeout(() => {
-    curtain.style.display = 'none';
-  }, 1500);
+    curtainStage.style.pointerEvents = 'none';
+  }, 1700);
 }, { once:true });
-
-
 
 
   
@@ -511,12 +513,3 @@ curtain.addEventListener('click', () => {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
