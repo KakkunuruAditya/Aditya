@@ -421,10 +421,31 @@ function typeFinalText(){
     container.appendChild(span);
   });
 }
+
+
+
+
+/* CURTAIN OPEN ON FIRST TAP */
+const curtain = document.getElementById('curtain');
+
+curtain.addEventListener('click', () => {
+  curtain.classList.add('open');
+
+  setTimeout(() => {
+    curtain.style.display = 'none';
+  }, 1500);
+}, { once:true });
+
+
+
+
+  
+  
 </script>
 
 </body>
 </html>
+
 
 
 
