@@ -244,12 +244,12 @@ body{
 
 <div class="page" id="page1">
   <div class="letter">
-    <h1>Heyy Buntyyy ga..</h1>
+    <h1>Ochesan ra Bullodaa...</h1>
     <p>Idi oka love letter kaadu…
       <br></br>
-    It's a pictorial representation of my Love💕</p>
+    It's a Pictorial representation of my Love 4 U💕</p>
     <div class="buttons-area">
-      <button class="btn" onclick="nextPage('page2')">🙈💞</button>
+      <button class="btn" onclick="nextPage('page2')">Click for More Love😘💞</button>
     </div>
   </div>
 </div>
@@ -258,8 +258,9 @@ body{
   <div class="letter">
     <h1>A Little Truth</h1>
     <p> కాదన్నా..కాదనకుండా </p>
+    <p> కడదాక నీతోనే ఉంటా🥹❤️ </p>
     <div class="buttons-area">
-      <button class="btn" onclick="nextPage('page3')">Next 💭</button>
+      <button class="btn" onclick="nextPage('page3')">🥹❤️</button>
     </div>
   </div>
 </div>
@@ -269,7 +270,7 @@ body{
     <h1>Telugu Lines</h1>
     <p>నీ నవ్వే నా రోజు వెలుగు… నీ మాటే నా మనసు గమ్యం.</p>
     <div class="buttons-area">
-      <button class="btn" onclick="nextPage('valentinePage')">One Question 💖</button>
+      <button class="btn" onclick="nextPage('valentinePage')">💖</button>
     </div>
   </div>
 </div>
@@ -278,7 +279,8 @@ body{
   <div class="letter">
     <h1>So…</h1>
     <p>షరతులు లేకుండా ఉంటా,శతాబ్ద కాలమైన</p>
-    <p>Will you be my Valentine?</p>
+    <H1><p>Will you be my Valentine?</p></H1>   
+    <p> Dammunte "No" cheppi chudra halwaaa..</p>
     <div class="buttons-area" id="valArea">
       <button class="btn heartbeat" onclick="goYes()">YES 💕</button>
       <button class="btn heartbeat" id="noBtn" onclick="escapeNo()">NO 😏</button>
@@ -290,10 +292,10 @@ body{
 <div class="page" id="destinyPage">
   <div class="destinyText">
     Haha…😌💖<br>
-    నాకు తెలుసురా నువ్వు YES ఏ నొక్కుతావని😁<br>
-    కావాలనుకున్నా విడిపోని బంధం కదా మరీ💫
+    Naaku telusu ra "YES"ey nokkuthavani😁<br>
+    కావాలనుకున్నా విడిపోని బంధం కదా ఎంతైన🫣💫
     <div class="buttons-area" style="justify-content:center;margin-top:40px">
-      <button class="btn" onclick="showFinal()">ఇంకెందుకు ఆలస్యం✨</button>
+      <button class="btn" onclick="showFinal()"> చూడాలని ఉందా🙈✨</button>
     </div>
   </div>
 </div>
@@ -336,7 +338,7 @@ function escapeNo(){
   no.style.left=Math.random()*(area.clientWidth-160)+'px';
   no.style.top=Math.random()*60+'px';
   document.getElementById('taunt').innerText =
-    tries<3 ? "Nice try 😌" : "No escape now 😘";
+    tries<3 ? "Nice try 😌": "Try chesindi chalu le": "Yes kotteyi ega😘";
   if(tries>=3){no.style.display='none'}
 }
 
@@ -362,7 +364,7 @@ function startHearts(){
   heartsStarted=true;
   for(let i=0;i<14;i++){
     const h=document.createElement('span');
-    h.innerHTML='💖';
+    h.innerHTML='🌹';
     h.style.left=Math.random()*100+'vw';
     h.style.fontSize=16+Math.random()*20+'px';
     h.style.animationDuration=7+Math.random()*6+'s';
@@ -372,7 +374,7 @@ function startHearts(){
 
 /* final text animation */
 function typeFinalText(){
-  const text="Happy Valentine’s Day 💝 —✍️";
+  const text="Happy Valentine’s Day ra chitti Bangaram🥹🌹";
   const container=document.getElementById('finalText');
   container.innerHTML='';
   [...text].forEach((ch,i)=>{
@@ -408,6 +410,7 @@ curtainStage.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
