@@ -85,14 +85,20 @@ body{
 }
 
 /* ================= LETTER ================= */
+
+
 .letter{
-  width:90%;max-width:560px;
+  width:92%;                 /* slightly wider */
+  max-width:680px;           /* MAIN CHANGE – bigger square */
   background:radial-gradient(circle at top,#f7e6c4,#e7cfa2);
-  padding:55px 50px;
-  border-radius:26px;
+  padding:65px 60px;         /* more breathing space */
+  border-radius:28px;
   box-shadow:0 30px 70px rgba(0,0,0,.4);
   position:relative;
 }
+
+  
+  
 .letter:before{
   content:'';position:absolute;inset:0;
   background:url('https://www.transparenttextures.com/patterns/paper-fibers.png');
@@ -394,6 +400,7 @@ curtainStage.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
