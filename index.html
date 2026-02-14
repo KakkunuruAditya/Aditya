@@ -282,6 +282,98 @@ body{
     0 12px 30px rgba(0,0,0,.35);
 }
 
+/* ================= ADDITIONAL CINEMATIC POLISH (SAFE ADDITIONS) ================= */
+
+/* Valentine page – cinematic entrance */
+#valentinePage .letter{
+  animation: valentineFocus 1.4s ease forwards;
+}
+@keyframes valentineFocus{
+  from{
+    opacity:0;
+    transform:scale(0.96) translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+/* Delay buttons slightly for drama */
+#valentinePage .buttons-area{
+  opacity:0;
+  animation: buttonsReveal 1.2s ease forwards;
+  animation-delay:1.2s;
+}
+@keyframes buttonsReveal{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* YES & NO – side-by-side without collision (ONLY Valentine page) */
+#valentinePage .buttons-area{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:32px; /* prevents touching */
+}
+
+/* Override JS absolute positioning visually (logic untouched) */
+#valentinePage #noBtn{
+  position:relative;
+  right:auto;
+}
+
+/* YES button – soft romantic glow */
+#valentinePage .btn.heartbeat{
+  box-shadow:
+    0 0 0 rgba(255,120,160,0),
+    0 14px 28px rgba(0,0,0,.38);
+  animation: yesGlow 2.2s infinite;
+}
+@keyframes yesGlow{
+  0%,100%{
+    box-shadow:
+      0 0 0 rgba(255,120,160,0),
+      0 14px 28px rgba(0,0,0,.38);
+  }
+  50%{
+    box-shadow:
+      0 0 18px rgba(255,120,160,.55),
+      0 18px 34px rgba(0,0,0,.45);
+  }
+}
+
+/* NO button – playful tease glow */
+#valentinePage #noBtn{
+  box-shadow:0 0 14px rgba(255,180,200,.35);
+}
+
+/* Mobile micro-tuning */
+@media (max-width:600px){
+  .letter{
+    padding:60px 46px;
+  }
+  .btn{
+    min-width:200px;
+    font-size:20px;
+  }
+  #valentinePage .buttons-area{
+    gap:24px;
+    flex-wrap:wrap; /* safety on tiny screens */
+  }
+}
+
+/* Smooth touch feel */
+.btn{
+  -webkit-tap-highlight-color: transparent;
+}
 
  
 </style>
@@ -535,6 +627,7 @@ goYes = function(){
 
 
  
+
 
 
 
