@@ -275,7 +275,7 @@ body{
 <div class="page active" id="envelopePage">
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap"></div>
-    <div class="envelopeText">Tap Gently💌<br>It's from my Heart❤️</div>
+    <div class="envelopeText">Tap Gently..<br>It's from my Heart💌</div>
   </div>
 </div>
 
@@ -286,7 +286,7 @@ body{
       <br></br>
     It's the 'Love' compiled into 'Code' by my Heart💕</p>
     <div class="buttons-area">
-      <button class="btn" onclick="nextPage('page2')">Click Here for more Love💞</button>
+      <button class="btn" onclick="nextPage('page2')">Tap for More Love💞</button>
     </div>
   </div>
 </div>
@@ -330,7 +330,7 @@ body{
   <div class="destinyText">
     Haha…😌💖<br>
     Naaku telusu ra "YES"ey nokkuthavani😁<br>
-    కావాలనుకున్నా విడిపోని బంధం కదా ఎంతైన🫣💫
+    True Love kadha enthaina..😘
     <div class="buttons-area" style="justify-content:center;margin-top:40px">
       <button class="btn" onclick="showFinal()"> చూడాలని ఉందా🙈✨</button>
     </div>
@@ -375,7 +375,7 @@ function escapeNo(){
   no.style.left=Math.random()*(area.clientWidth-160)+'px';
   no.style.top=Math.random()*60+'px';
   document.getElementById('taunt').innerText =
-    tries<3 ? "Nice try 😌": "Muskoni..Yes kotteyi ega😘";
+    tries<3 ? "Nice try 😌": "Chaalu le gani Muskoni..'Yes' kottu ega😘";
   if(tries>=3){no.style.display='none'}
 }
 
@@ -401,7 +401,7 @@ function startHearts(){
   heartsStarted=true;
   for(let i=0;i<14;i++){
     const h=document.createElement('span');
-    h.innerHTML='🌹🫀❤️💕';
+    h.innerHTML='🌹💕';
     h.style.left=Math.random()*100+'vw';
     h.style.fontSize=16+Math.random()*20+'px';
     h.style.animationDuration=7+Math.random()*6+'s';
@@ -411,7 +411,7 @@ function startHearts(){
 
 /* final text animation */
 function typeFinalText(){
-  const text="Happy Valentine’s Day ra chitti Bangaram🥹🌹";
+  const text="Happy Valentine’s Day Bangaram🥹🌹";
   const container=document.getElementById('finalText');
   container.innerHTML='';
   [...text].forEach((ch,i)=>{
@@ -460,5 +460,6 @@ curtainStage.addEventListener('click', () => {
 
 
  
+
 
 
