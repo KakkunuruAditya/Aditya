@@ -609,7 +609,55 @@ goYes = function(){
   originalGoYes();
 };
 
-  
+
+
+
+/* ================= ADDITIONAL MICRO-EFFECTS (SAFE ADDITIONS) ================= */
+
+/* Heart micro-burst on YES (no logic changed) */
+function burstHearts(){
+  const area=document.getElementById('valArea');
+  for(let i=0;i<10;i++){
+    const h=document.createElement('span');
+    h.innerHTML='💖';
+    h.style.position='absolute';
+    h.style.left='50%';
+    h.style.top='50%';
+    h.style.transform=`translate(-50%,-50%) scale(${0.6+Math.random()})`;
+    h.style.fontSize=(18+Math.random()*16)+'px';
+    h.style.transition='all 1.2s ease';
+    area.appendChild(h);
+
+    setTimeout(()=>{
+      h.style.opacity='0';
+      h.style.transform=`translate(${(Math.random()*120-60)}px,${-120-Math.random()*80}px) scale(1.4)`;
+    },30);
+
+    setTimeout(()=>h.remove(),1300);
+  }
+}
+
+/* Hook into existing YES without touching it */
+const originalGoYes = goYes;
+goYes = function(){
+  burstHearts();
+  originalGoYes();
+};
+
+/* Valentine page cinematic pause on entry */
+const originalShowPage = showPage;
+showPage = function(id){
+  originalShowPage(id);
+  if(id==='valentinePage'){
+    const btns=document.querySelector('#valentinePage .buttons-area');
+    btns.style.pointerEvents='none';
+    setTimeout(()=>btns.style.pointerEvents='auto',1800);
+  }
+};
+
+
+
+ 
 </script>
 
 </body>
@@ -627,6 +675,7 @@ goYes = function(){
 
 
  
+
 
 
 
