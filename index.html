@@ -103,42 +103,47 @@ body{
 /* ================= TEXT ================= */
 .letter h1{
   font-family:'Great Vibes',cursive;
-  font-size:56px;
+  font-size:60px;               /* slightly bigger */
   color:#6a2b1f;
-  margin:0 0 26px;
+  margin:0 0 28px;
   letter-spacing:1px;
+  font-weight:700;
 }
 
 .letter p{
-  font-size:22px;
-  line-height:2.05;
+  font-size:24px;               /* increased readability */
+  line-height:2.1;
   color:#4b2a1c;
-  margin:14px 0;
+  margin:16px 0;
   font-weight:500;
 }
 
 /* ================= BUTTONS ================= */
 .buttons-area{
-  margin-top:44px;
-  height:110px;
+  margin-top:48px;
+  height:auto;
   position:relative;
   display:flex;
-  justify-content:space-between;
+  justify-content:center;       /* CENTERED */
   align-items:center;
+  gap:26px;
 }
 
 .btn{
-  width:190px;
-  height:58px;
+  width:auto;                   /* adapts to text */
+  min-width:220px;
+  padding:0 34px;
+  height:62px;
   border:none;
-  border-radius:22px;
-  font-size:20px;
+  border-radius:24px;
+  font-size:22px;
   font-weight:600;
   cursor:pointer;
   color:white;
   background:linear-gradient(135deg,#a44a5d,#6e1f2c);
   box-shadow:0 14px 28px rgba(0,0,0,.38);
   transition:.35s ease;
+  white-space:nowrap;           /* NO TEXT BREAK */
 }
 .btn:hover{
   transform:translateY(-6px) scale(1.06);
@@ -152,11 +157,15 @@ body{
   50%{transform:scale(1.12)}
 }
 
-#noBtn{position:absolute;right:0}
+/* KEEP JS SAFE */
+#noBtn{
+  position:absolute;
+  right:0;
+}
 
 #taunt{
-  margin-top:22px;
-  font-size:18px;
+  margin-top:24px;
+  font-size:20px;
   font-weight:600;
   color:#6e1f2c;
   min-height:28px;
@@ -171,7 +180,7 @@ body{
 .destinyText{
   text-align:center;
   font-family:'Great Vibes',cursive;
-  font-size:60px;
+  font-size:62px;
   line-height:1.6;
   color:#7a1432;
   animation:fadeUp 1.6s ease forwards;
@@ -184,7 +193,7 @@ body{
 /* FINAL TEXT */
 .finalText{
   font-family:'Great Vibes',cursive;
-  font-size:86px;
+  font-size:90px;
   color:#7a1432;
   letter-spacing:2px;
   text-align:center;
@@ -235,6 +244,7 @@ body{
   box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
 </style>
+
   
 
 
@@ -450,4 +460,5 @@ curtainStage.addEventListener('click', () => {
 
 
  
+
 
