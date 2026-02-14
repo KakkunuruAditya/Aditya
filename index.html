@@ -246,6 +246,40 @@ body{
 
 
 
+/* ================= SAFE ADDITIONS (DO NOT TOUCH ABOVE CODE) ================= */
+
+/* Fix YES/NO collision ONLY on Valentine page */
+#valentinePage .buttons-area{
+  display:flex;
+  justify-content:center;
+  gap:32px;
+}
+
+/* Neutralize NO button absolute positioning ONLY here */
+#valentinePage #noBtn{
+  position:relative;
+  right:auto;
+  top:auto;
+}
+
+/* Mobile micro-tuning */
+@media (max-width:600px){
+  #valentinePage .buttons-area{
+    flex-direction:row;
+    gap:20px;
+  }
+  .btn{
+    min-width:180px;
+    font-size:20px;
+  }
+}
+
+/* YES button heart glow */
+#valentinePage .btn:first-child{
+  box-shadow:
+    0 0 20px rgba(255,120,150,.6),
+    0 12px 30px rgba(0,0,0,.35);
+}
 
 
  
@@ -504,6 +538,7 @@ goYes = function(){
 
 
  
+
 
 
 
