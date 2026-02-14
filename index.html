@@ -8,18 +8,28 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
 
+ 
 <style>
 *{box-sizing:border-box}
+
 body{
-  margin:0;height:100vh;
+  margin:0;
+  height:100vh;
   font-family:'Playfair Display',serif;
   background:radial-gradient(circle at top,#2b0f17,#0d0508);
   overflow:hidden;
+  color:#4b2a1c;
 }
+
+/* ================= PAGES ================= */
 .page{
-  position:absolute;inset:0;
-  display:flex;justify-content:center;align-items:center;
-  opacity:0;pointer-events:none;
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
   transition:opacity 1s ease;
 }
 .page.active{opacity:1;pointer-events:auto}
@@ -29,112 +39,129 @@ body{
   background:radial-gradient(circle at top,#3a141b,#12070a);
 }
 .envelope{
-  width:750px;height:500px;
+  width:750px;
+  height:500px;
   background:linear-gradient(145deg,#4a0f1f,#7b1e34,#4a0f1f);
-  border-radius:24px;
-  position:relative;cursor:pointer;
+  border-radius:26px;
+  position:relative;
+  cursor:pointer;
   box-shadow:
     0 40px 90px rgba(0,0,0,.8),
     inset 0 0 0 3px rgba(255,215,180,.25);
 }
 .envelope:before{
   content:'';
-  position:absolute;inset:14px;
-  border-radius:18px;
+  position:absolute;
+  inset:14px;
+  border-radius:20px;
   border:2px solid rgba(255,215,180,.35);
 }
 .flap{
   position:absolute;
-  top:0;
-  left:0;
-  right:0;
+  top:0;left:0;right:0;
   height:62%;
-
-  /* same color family, smoother paper-like gradient */
-  background:linear-gradient(
-    to bottom,
-    #a33a52 0%,
-    #7b1e34 55%,
-    #6b1a2e 100%
-  );
-
-  /* NATURAL envelope fold (no sharp triangle) */
-  clip-path:polygon(
-    0 0,
-    100% 0,
-    96% 72%,
-    50% 100%,
-    4% 72%
-  );
-
+  background:linear-gradient(to bottom,#a33a52,#7b1e34,#6b1a2e);
+  clip-path:polygon(0 0,100% 0,96% 72%,50% 100%,4% 72%);
   transform-origin:top center;
   transition:transform 1.2s ease;
-
-  /* depth + fold realism */
-  box-shadow:
-    inset 0 -14px 22px rgba(0,0,0,.35),
-    0 4px 10px rgba(0,0,0,.25);
+  box-shadow:inset 0 -14px 22px rgba(0,0,0,.35),
+             0 4px 10px rgba(0,0,0,.25);
 }
 .envelope.open .flap{transform:rotateX(160deg)}
 .envelopeText{
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-family:'Great Vibes',cursive;
-  font-size:46px;color:#f8e4d2;
-  text-shadow:0 0 20px rgba(255,200,180,.5);
+  font-size:52px;
+  color:#fde8d8;
+  text-shadow:0 0 24px rgba(255,200,180,.6);
 }
 
 /* ================= LETTER ================= */
-
-
 .letter{
-  width:92%;                 /* slightly wider */
-  max-width:680px;           /* MAIN CHANGE – bigger square */
-  background:radial-gradient(circle at top,#f7e6c4,#e7cfa2);
-  padding:65px 60px;         /* more breathing space */
-  border-radius:28px;
-  box-shadow:0 30px 70px rgba(0,0,0,.4);
+  width:92%;
+  max-width:720px;
+  background:radial-gradient(circle at top,#f8e7c8,#e6c99b);
+  padding:72px 68px;
+  border-radius:30px;
+  box-shadow:0 32px 72px rgba(0,0,0,.42);
   position:relative;
+  text-align:center;
+}
+.letter:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  opacity:.35;
+  border-radius:30px;
 }
 
-  
-  
-.letter:before{
-  content:'';position:absolute;inset:0;
-  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-  opacity:.35;border-radius:26px;
-}
+/* ================= TEXT ================= */
 .letter h1{
   font-family:'Great Vibes',cursive;
-  font-size:48px;color:#5a2b1c;margin-top:0;
+  font-size:56px;
+  color:#6a2b1f;
+  margin:0 0 26px;
+  letter-spacing:1px;
 }
-.letter p{font-size:17px;line-height:1.9}
+
+.letter p{
+  font-size:22px;
+  line-height:2.05;
+  color:#4b2a1c;
+  margin:14px 0;
+  font-weight:500;
+}
 
 /* ================= BUTTONS ================= */
 .buttons-area{
-  margin-top:35px;height:100px;
+  margin-top:44px;
+  height:110px;
   position:relative;
-  display:flex;justify-content:space-between;align-items:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
+
 .btn{
-  width:160px;height:54px;
-  border:none;border-radius:18px;
-  font-size:18px;font-weight:600;
-  cursor:pointer;color:white;
+  width:190px;
+  height:58px;
+  border:none;
+  border-radius:22px;
+  font-size:20px;
+  font-weight:600;
+  cursor:pointer;
+  color:white;
   background:linear-gradient(135deg,#a44a5d,#6e1f2c);
-  box-shadow:0 12px 25px rgba(0,0,0,.35);
-  transition:.3s;
+  box-shadow:0 14px 28px rgba(0,0,0,.38);
+  transition:.35s ease;
 }
-.btn:hover{transform:translateY(-6px) scale(1.05)}
+.btn:hover{
+  transform:translateY(-6px) scale(1.06);
+}
+
 .heartbeat{
   animation:beat 1.6s infinite;
 }
 @keyframes beat{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.08)}
+  50%{transform:scale(1.12)}
 }
+
 #noBtn{position:absolute;right:0}
-#taunt{margin-top:18px;font-weight:600;color:#6e1f2c;min-height:26px}
+
+#taunt{
+  margin-top:22px;
+  font-size:18px;
+  font-weight:600;
+  color:#6e1f2c;
+  min-height:28px;
+  text-align:center;
+}
 
 /* ================= DESTINY & FINAL ================= */
 #destinyPage,
@@ -144,7 +171,8 @@ body{
 .destinyText{
   text-align:center;
   font-family:'Great Vibes',cursive;
-  font-size:56px;
+  font-size:60px;
+  line-height:1.6;
   color:#7a1432;
   animation:fadeUp 1.6s ease forwards;
 }
@@ -153,12 +181,13 @@ body{
   to{opacity:1;transform:translateY(0)}
 }
 
-/* FINAL TEXT SPECIAL EFFECT */
+/* FINAL TEXT */
 .finalText{
   font-family:'Great Vibes',cursive;
-  font-size:78px;
+  font-size:86px;
   color:#7a1432;
   letter-spacing:2px;
+  text-align:center;
 }
 .finalText span{
   opacity:0;
@@ -172,7 +201,8 @@ body{
 
 /* ================= EFFECTS ================= */
 #petals span{
-  position:fixed;top:-10vh;
+  position:fixed;
+  top:-10vh;
   animation:fall linear infinite;
   opacity:.8;
 }
@@ -180,7 +210,8 @@ body{
   to{transform:translateY(120vh) rotate(360deg)}
 }
 #hearts span{
-  position:fixed;bottom:-10vh;
+  position:fixed;
+  bottom:-10vh;
   animation:rise linear infinite;
   opacity:.6;
 }
@@ -190,18 +221,24 @@ body{
 
 /* ================= MUSIC ================= */
 .musicBtn{
-  position:fixed;bottom:20px;right:20px;
-  background:#6e1f2c;color:white;
-  border:none;border-radius:50%;
-  width:56px;height:56px;
-  font-size:22px;cursor:pointer;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#6e1f2c;
+  color:white;
+  border:none;
+  border-radius:50%;
+  width:58px;
+  height:58px;
+  font-size:24px;
+  cursor:pointer;
   box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
-
+</style>
+  
 
 
   
-</style>
 </head>
 
 <body>
@@ -400,6 +437,7 @@ curtainStage.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
